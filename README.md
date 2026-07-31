@@ -6,9 +6,9 @@ Dealers quote against a market that moves all day. CounterMint reprices every li
 
 Python 3.12 / FastAPI on PostgreSQL, deployed with Docker Compose on DigitalOcean. Currently in private beta.
 
-> Application source is private. This repository documents the architecture, the pricing model, and the design decisions behind them. Walkthroughs and demos available on request: [ray.j.kraft@gmail.com](mailto:ray.j.kraft@gmail.com).
+> Application source is private. This repository documents the architecture, the pricing model, and the design decisions behind them. Walkthroughs and demos available on request: [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com).
 
-**Links:** [countermint.io](https://countermint.io) | [Roots No Limits](https://rootsnolimits.com) | [LinkedIn](https://linkedin.com/in/raymondkraft)
+**Links:** [countermint.io](https://countermint.io) [app.countermint.io](https://app.countermint.io)| [Roots No Limits](https://rootsnolimits.com) | [LinkedIn](https://linkedin.com/in/raymondkraft)
 
 ---
 

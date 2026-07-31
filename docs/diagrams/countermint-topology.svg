@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1540 1080" width="1540" height="1080" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .hd  { fill:#ffffff; font-weight:700; }
+      .sub { fill:#c7d6ea; }
+      .ttl { font-weight:700; fill:#12283f; }
+      .sm  { font-size:11.5px; fill:#3c4b5f; }
+      .xs  { font-size:10.5px; fill:#5a6b80; }
+      .lbl { font-size:10px; fill:#6b7f99; font-weight:600; letter-spacing:.4px; }
+      .grp { font-size:11px; font-weight:700; letter-spacing:1.1px; fill:#6b7f99; }
+      .box { rx:8; }
+    </style>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7d90a8"/>
+    </marker>
+    <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4f8a72"/>
+    </marker>
+  </defs>
+
+  <rect width="1540" height="1080" fill="#ffffff"/>
+
+  <!-- HEADER -->
+  <rect x="0" y="0" width="1540" height="74" fill="#12283f"/>
+  <text x="770" y="33" class="hd" font-size="25" text-anchor="middle">CounterMint™ — Platform Topology &amp; Technical Design</text>
+  <text x="770" y="56" class="sub" font-size="13.5" text-anchor="middle">AI-assisted quoting and pricing intelligence for precious-metals and numismatic dealers · Multi-tenant · Headless API</text>
+
+  <!-- ============ CLIENT SURFACES ============ -->
+  <text x="24" y="103" class="grp">CLIENT SURFACES</text>
+
+  <rect x="24" y="112" width="246" height="168" class="box" fill="#eef3fa" stroke="#5b7ea8" stroke-width="1.3"/>
+  <rect x="24" y="112" width="246" height="30" class="box" fill="#dbe7f5" stroke="#5b7ea8" stroke-width="1.3"/>
+  <text x="40" y="132" class="ttl" font-size="12.5">countermint.io</text>
+  <text x="254" y="132" class="xs" text-anchor="end" fill="#35608f">Public</text>
+  <text x="40" y="160" class="xs">Marketing &amp; acquisition</text>
+  <text x="40" y="180" class="xs">Pricing, plans, demos</text>
+  <text x="40" y="200" class="xs">Signup &amp; checkout initiation</text>
+  <text x="40" y="220" class="xs">Lead capture &amp; SEO</text>
+  <text x="40" y="248" class="xs" fill="#8a5f12">WordPress on Cloudways</text>
+  <text x="40" y="266" class="xs" fill="#8a5f12">Varnish + Redis · MariaDB</text>
+
+  <rect x="284" y="112" width="246" height="168" class="box" fill="#eef3fa" stroke="#5b7ea8" stroke-width="1.3"/>
+  <rect x="284" y="112" width="246" height="30" class="box" fill="#dbe7f5" stroke="#5b7ea8" stroke-width="1.3"/>
+  <text x="300" y="132" class="ttl" font-size="12.5">app.countermint.io</text>
+  <text x="514" y="132" class="xs" text-anchor="end" fill="#35608f">Dealer</text>
+  <text x="300" y="160" class="xs">Quote builder &amp; inventory</text>
+  <text x="300" y="180" class="xs">Bands, biases &amp; pricing policy</text>
+  <text x="300" y="200" class="xs">Appraisal &amp; image intake</text>
+  <text x="300" y="220" class="xs">Account, billing, seats</text>
+  <text x="300" y="248" class="xs" fill="#35608f">React 18 + Vite (TypeScript)</text>
+  <text x="300" y="266" class="xs" fill="#35608f">Cloudflare Pages (global edge)</text>
+
+  <rect x="544" y="112" width="220" height="168" class="box" fill="#eef3fa" stroke="#5b7ea8" stroke-width="1.3"/>
+  <rect x="544" y="112" width="220" height="30" class="box" fill="#dbe7f5" stroke="#5b7ea8" stroke-width="1.3"/>
+  <text x="560" y="132" class="ttl" font-size="12.5">Customer quote view</text>
+  <text x="560" y="160" class="xs">Live-priced quote link</text>
+  <text x="560" y="180" class="xs">Remote accept</text>
+  <text x="560" y="200" class="xs">Counter-offer submission</text>
+  <text x="560" y="220" class="xs">Frozen snapshot on accept</text>
+  <text x="560" y="252" class="xs" fill="#35608f">No account required</text>
+
+  <rect x="778" y="112" width="200" height="168" class="box" fill="#f7f7f9" stroke="#a0a6b4" stroke-width="1.3" stroke-dasharray="5 4"/>
+  <rect x="778" y="112" width="200" height="30" class="box" fill="#eceef2" stroke="#a0a6b4" stroke-width="1.3"/>
+  <text x="794" y="132" class="ttl" font-size="12.5" fill="#5a6b80">Native iOS / Android</text>
+  <rect x="794" y="152" width="66" height="19" rx="9" fill="#e8d9bf" stroke="#a8873f"/>
+  <text x="827" y="166" class="xs" text-anchor="middle" fill="#6b5116" font-weight="700">PLANNED</text>
+  <text x="794" y="192" class="xs" fill="#7a879a">Dealer operations on the floor</text>
+  <text x="794" y="212" class="xs" fill="#7a879a">Inventory &amp; camera intake</text>
+  <text x="794" y="232" class="xs" fill="#7a879a">Push notifications</text>
+  <text x="794" y="258" class="xs" fill="#7a879a">Not built. The API is already</text>
+  <text x="794" y="272" class="xs" fill="#7a879a">client-agnostic and ready.</text>
+
+  <rect x="1012" y="112" width="504" height="168" class="box" fill="#f0eef8" stroke="#7a6ca8" stroke-width="1.3"/>
+  <text x="1032" y="136" class="ttl" font-size="13" fill="#392c63">Design principles</text>
+  <text x="1032" y="162" class="sm">✓ &#160;One headless API is the single source of truth for every client surface</text>
+  <text x="1032" y="184" class="sm">✓ &#160;Melt value and collector premium are priced separately, never fused</text>
+  <text x="1032" y="206" class="sm">✓ &#160;An accepted quote is immutable, whatever the market does next</text>
+  <text x="1032" y="228" class="sm">✓ &#160;Every quoted number traces to its source and the rule that produced it</text>
+  <text x="1032" y="250" class="sm">✓ &#160;Third-party pricing is metered, so it is cached in exactly one place</text>
+  <text x="1032" y="272" class="sm">✓ &#160;Deterministic pricing math; models assist appraisal, they do not set price</text>
+
+  <!-- CLOUDFLARE BAND -->
+  <rect x="24" y="300" width="1492" height="42" class="box" fill="#fdf3e3" stroke="#e0a33f" stroke-width="1.3"/>
+  <text x="44" y="326" class="ttl" font-size="13.5" fill="#8a5f12">CLOUDFLARE</text>
+  <text x="176" y="326" class="sm" fill="#6a4a10">DNS · CDN · WAF · TLS · DDoS · Rate limiting (countermint.io · app.countermint.io · api.countermint.io)</text>
+  <text x="1496" y="326" class="xs" text-anchor="end" fill="#8a5f12">Three subdomains, three tiers</text>
+
+  <line x1="147" y1="280" x2="147" y2="300" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="407" y1="280" x2="407" y2="300" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="654" y1="280" x2="654" y2="300" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="878" y1="280" x2="878" y2="300" stroke="#a0a6b4" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+
+  <!-- ============ COMPUTE ============ -->
+  <text x="24" y="368" class="grp">COMPUTE</text>
+
+  <!-- WordPress -->
+  <rect x="24" y="378" width="300" height="286" class="box" fill="#fdfaf4" stroke="#a8873f" stroke-width="1.5"/>
+  <rect x="24" y="378" width="300" height="32" class="box" fill="#f5ecdb" stroke="#a8873f" stroke-width="1.5"/>
+  <text x="40" y="399" class="ttl" font-size="12.5" fill="#3d2f13">Marketing stack · Cloudways</text>
+  <text x="40" y="428" class="lbl">WORDPRESS (TLD)</text>
+  <text x="40" y="450" class="xs">Hello Elementor + Elementor Pro</text>
+  <text x="40" y="470" class="xs">RankMath SEO · Fluent Forms</text>
+  <text x="40" y="490" class="xs">Subscription checkout entry</text>
+  <text x="40" y="510" class="xs">Product &amp; pricing pages</text>
+  <text x="40" y="536" class="lbl">HOSTING</text>
+  <text x="40" y="558" class="xs">Cloudways (Vultr HF)</text>
+  <text x="40" y="578" class="xs">Varnish + Redis object cache</text>
+  <text x="40" y="598" class="xs">MariaDB</text>
+  <rect x="40" y="614" width="268" height="38" rx="6" fill="#f7f0e4" stroke="#c4a561"/>
+  <text x="52" y="631" class="xs" fill="#6b5116" font-weight="700">Custom MCP server</text>
+  <text x="52" y="646" class="xs" fill="#6b5116">Permissioned agent access to WP content</text>
+
+  <!-- FastAPI -->
+  <rect x="338" y="378" width="600" height="286" class="box" fill="#f6f9fd" stroke="#35608f" stroke-width="1.7"/>
+  <rect x="338" y="378" width="600" height="32" class="box" fill="#dfe9f6" stroke="#35608f" stroke-width="1.7"/>
+  <text x="354" y="399" class="ttl" font-size="12.5">CounterMint API · api.countermint.io</text>
+  <text x="922" y="399" class="xs" text-anchor="end" fill="#35608f">Headless · client-agnostic</text>
+
+  <text x="354" y="428" class="lbl">PRICING &amp; QUOTING</text>
+  <text x="354" y="450" class="xs">• Quote service: live repricing, counter-offers, freeze</text>
+  <text x="354" y="470" class="xs">• Valuation engine: melt + numismatic premium</text>
+  <text x="354" y="490" class="xs">• Dealer bands &amp; biases per input class</text>
+  <text x="354" y="510" class="xs">• GSID resolution (CDN / Greysheet)</text>
+  <text x="354" y="530" class="xs">• Value provenance: source + rule per number</text>
+  <text x="354" y="550" class="xs">• Internal data API: cache · dedupe · cost control</text>
+  <text x="354" y="570" class="xs">• Vision appraisal &amp; multi-item segmentation</text>
+  <text x="354" y="590" class="xs">• Document refresh &amp; export</text>
+
+  <text x="652" y="428" class="lbl">PLATFORM SERVICES</text>
+  <text x="652" y="450" class="xs">• Auth &amp; tenancy (Argon2, JWT + refresh cookie)</text>
+  <text x="652" y="470" class="xs">• Multi-tenant isolation, roles, seats</text>
+  <text x="652" y="490" class="xs">• Subscriptions, entitlements, usage limits</text>
+  <text x="652" y="510" class="xs">• Payment orchestration (Stripe) + webhooks</text>
+  <text x="652" y="530" class="xs">• External data aggregation &amp; normalization</text>
+  <text x="652" y="550" class="xs">• AI model orchestration &amp; RAG retrieval</text>
+  <text x="652" y="570" class="xs">• Compliance, validation, audit trail</text>
+  <text x="652" y="590" class="xs">• Rate limiting, logging, background jobs</text>
+
+  <rect x="354" y="606" width="568" height="46" rx="6" fill="#eef3fa" stroke="#8fa8c8"/>
+  <text x="366" y="624" class="xs" font-weight="700" fill="#35608f">Python 3.12 · FastAPI (async) · Uvicorn ASGI · SQLAlchemy 2.0 · Alembic · Pydantic v2</text>
+  <text x="366" y="642" class="xs">Docker Compose on a DigitalOcean droplet (NYC), behind Caddy for TLS termination and reverse proxy</text>
+
+  <!-- AI -->
+  <rect x="952" y="378" width="564" height="286" class="box" fill="#f7f5fc" stroke="#7a6ca8" stroke-width="1.7"/>
+  <rect x="952" y="378" width="564" height="32" class="box" fill="#e9e5f5" stroke="#7a6ca8" stroke-width="1.7"/>
+  <text x="968" y="399" class="ttl" font-size="12.5" fill="#392c63">Multi-Model / Multimodal Orchestration</text>
+
+  <rect x="968" y="422" width="164" height="46" rx="6" fill="#ffffff" stroke="#9b8ec4"/>
+  <text x="1050" y="441" class="sm" text-anchor="middle" font-weight="700">OpenAI</text>
+  <text x="1050" y="458" class="xs" text-anchor="middle">GPT · vision appraisal</text>
+  <rect x="1146" y="422" width="164" height="46" rx="6" fill="#ffffff" stroke="#9b8ec4"/>
+  <text x="1228" y="441" class="sm" text-anchor="middle" font-weight="700">Anthropic</text>
+  <text x="1228" y="458" class="xs" text-anchor="middle">Claude</text>
+  <rect x="1324" y="422" width="176" height="46" rx="6" fill="#ffffff" stroke="#9b8ec4"/>
+  <text x="1412" y="441" class="sm" text-anchor="middle" font-weight="700">Google</text>
+  <text x="1412" y="458" class="xs" text-anchor="middle">Gemini</text>
+
+  <text x="968" y="492" class="lbl">ROUTER</text>
+  <text x="968" y="514" class="xs">• Routing by latency, cost and payload shape</text>
+  <text x="968" y="534" class="xs">• Deterministic state-machine constrains every model call</text>
+  <text x="968" y="554" class="xs">• Vision pipeline: one photo of mixed inventory → N line items</text>
+  <text x="968" y="574" class="xs">• Secure RAG over internal datasets, no IP exposure</text>
+  <text x="968" y="594" class="xs">• Structured output, schema validation, hallucination guards</text>
+  <text x="968" y="614" class="xs">• Ordered provider fallback on error or timeout</text>
+  <rect x="968" y="626" width="532" height="26" rx="6" fill="#f0eef8" stroke="#a89ccb"/>
+  <text x="980" y="644" class="xs" fill="#4a3b7a">Models assist appraisal and extraction. Pricing arithmetic stays deterministic and auditable.</text>
+
+  <line x1="174" y1="342" x2="174" y2="378" stroke="#a8873f" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="638" y1="342" x2="638" y2="378" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#ar)"/>
+  <line x1="938" y1="500" x2="952" y2="500" stroke="#7a6ca8" stroke-width="1.8" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <line x1="324" y1="520" x2="338" y2="520" stroke="#a8873f" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+
+  <!-- ============ STATE ============ -->
+  <text x="24" y="700" class="grp">STATE &amp; PERSISTENCE</text>
+  <rect x="24" y="710" width="914" height="150" class="box" fill="#f4faf7" stroke="#4f8a72" stroke-width="1.4"/>
+
+  <rect x="40" y="726" width="286" height="118" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
+  <text x="54" y="748" class="ttl" font-size="12.5" fill="#14301f">PostgreSQL 16 (asyncpg)</text>
+  <text x="54" y="770" class="xs">tenants · members · seats · roles</text>
+  <text x="54" y="788" class="xs">inventory · quotes · line items</text>
+  <text x="54" y="806" class="xs">frozen snapshots · provenance</text>
+  <text x="54" y="824" class="xs">billing · entitlements · audit logs</text>
+  <text x="54" y="840" class="xs" font-weight="700" fill="#3a6b55">20 Alembic migrations · SQLAlchemy 2.0</text>
+
+  <rect x="340" y="726" width="286" height="118" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
+  <text x="354" y="748" class="ttl" font-size="12.5" fill="#14301f">Cloudflare R2 (per-tenant)</text>
+  <text x="354" y="770" class="xs">Appraisal images &amp; slab photos</text>
+  <text x="354" y="788" class="xs">Generated dealer &amp; client documents</text>
+  <text x="354" y="806" class="xs">Exports and backups</text>
+  <text x="354" y="830" class="xs">Private buckets, scoped access</text>
+
+  <rect x="640" y="726" width="282" height="118" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
+  <text x="654" y="748" class="ttl" font-size="12.5" fill="#14301f">Normalized pricing store</text>
+  <text x="654" y="770" class="xs">The single source of truth: every</text>
+  <text x="654" y="788" class="xs">provider value is normalized on</text>
+  <text x="654" y="806" class="xs">arrival and stored once, then served</text>
+  <text x="654" y="824" class="xs">to every client from cache.</text>
+  <text x="654" y="840" class="xs" font-weight="700" fill="#3a6b55">Spot refresh on a 60-second cycle</text>
+
+  <!-- External providers -->
+  <text x="952" y="700" class="grp">EXTERNAL PROVIDERS</text>
+  <rect x="952" y="710" width="564" height="150" class="box" fill="#fdf8ef" stroke="#a8873f" stroke-width="1.4"/>
+
+  <rect x="968" y="726" width="270" height="54" rx="6" fill="#f7f0e4" stroke="#a8873f"/>
+  <text x="982" y="746" class="ttl" font-size="12" fill="#3d2f13">MetalpriceAPI</text>
+  <text x="982" y="766" class="xs">Live spot: gold · silver · platinum · palladium</text>
+
+  <rect x="1250" y="726" width="250" height="54" rx="6" fill="#f7f0e4" stroke="#a8873f"/>
+  <text x="1264" y="746" class="ttl" font-size="12" fill="#3d2f13">sold-comps.com</text>
+  <text x="1264" y="766" class="xs">eBay sold listings, polled every 60s</text>
+
+  <rect x="968" y="792" width="270" height="54" rx="6" fill="#faf6ee" stroke="#c4a561" stroke-dasharray="5 4"/>
+  <text x="982" y="812" class="ttl" font-size="12" fill="#6b5116">CDN / Greysheet</text>
+  <text x="982" y="832" class="xs" fill="#7a6a45">Client + fixtures built · access pending</text>
+
+  <rect x="1250" y="792" width="250" height="54" rx="6" fill="#f7f0e4" stroke="#a8873f"/>
+  <text x="1264" y="812" class="ttl" font-size="12" fill="#3d2f13">Stripe · Mailgun</text>
+  <text x="1264" y="832" class="xs">Checkout, portal, webhooks · email</text>
+
+  <line x1="482" y1="664" x2="482" y2="710" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#arg)"/>
+  <line x1="1180" y1="664" x2="1180" y2="710" stroke="#a8873f" stroke-width="1.6" marker-start="url(#ar)" marker-end="url(#ar)"/>
+
+  <!-- ============ BOTTOM ============ -->
+  <rect x="24" y="880" width="486" height="150" class="box" fill="#fdf1e7" stroke="#d08a4a" stroke-width="1.4"/>
+  <text x="44" y="904" class="ttl" font-size="13" fill="#8a4a12">Security &amp; Trust</text>
+  <text x="44" y="928" class="sm">• TLS 1.2+ end to end; Caddy-managed certificates</text>
+  <text x="44" y="948" class="sm">• Argon2 hashing; JWT access + HttpOnly refresh cookies</text>
+  <text x="44" y="968" class="sm">• CSRF protection on all state-changing requests</text>
+  <text x="44" y="988" class="sm">• Rate limiting and brute-force protection</text>
+  <text x="44" y="1008" class="sm">• Encryption at rest; RBAC least privilege; backups + DR</text>
+  <text x="44" y="1024" class="xs" fill="#8a4a12">Card data never touches the platform; Stripe hosts every payment page.</text>
+
+  <rect x="526" y="880" width="454" height="150" class="box" fill="#f1f6f4" stroke="#4f8a72" stroke-width="1.4"/>
+  <text x="546" y="904" class="ttl" font-size="13" fill="#1d4736">Governance &amp; quality gates</text>
+  <text x="546" y="928" class="sm">• 419 automated tests (pytest) on a dedicated PostgreSQL DB</text>
+  <text x="546" y="948" class="sm">• Pricing-drift regression suite guards frozen quotes</text>
+  <text x="546" y="968" class="sm">• Deterministic, auditable workflows with full data lineage</text>
+  <text x="546" y="988" class="sm">• Written code review per workstream before merge</text>
+  <text x="546" y="1008" class="sm">• Health-checked rolling deploy: build → migrate → restart → verify</text>
+  <text x="546" y="1024" class="xs" fill="#1d4736">Configurable retention; no exposure of dealer proprietary data.</text>
+
+  <rect x="996" y="880" width="520" height="150" class="box" fill="#f6f9fd" stroke="#35608f" stroke-width="1.4"/>
+  <text x="1016" y="904" class="ttl" font-size="13" fill="#0f2440">Stack</text>
+  <text x="1016" y="928" class="sm"><tspan font-weight="700">Backend</tspan> &#160;Python 3.12 · FastAPI · Uvicorn · SQLAlchemy 2.0</text>
+  <text x="1016" y="948" class="sm"><tspan font-weight="700">Data</tspan> &#160;PostgreSQL 16 (asyncpg) · Alembic · Cloudflare R2</text>
+  <text x="1016" y="968" class="sm"><tspan font-weight="700">Frontend</tspan> &#160;React 18 · Vite · TypeScript · Cloudflare Pages</text>
+  <text x="1016" y="988" class="sm"><tspan font-weight="700">Infra</tspan> &#160;Docker Compose · DigitalOcean · Caddy · Cloudflare</text>
+  <text x="1016" y="1008" class="sm"><tspan font-weight="700">Testing</tspan> &#160;pytest · pytest-asyncio · fixture-backed provider tests</text>
+  <text x="1016" y="1024" class="xs" fill="#35608f">~48,000 lines of Python and JSX</text>
+
+  <rect x="0" y="1046" width="1540" height="34" fill="#12283f"/>
+  <text x="24" y="1068" class="xs" fill="#9fb4cd">CounterMint™ · Roots No Limits LLC · Private beta</text>
+  <text x="1516" y="1068" class="xs" fill="#9fb4cd" text-anchor="end">v1.0 · July 2026</text>
+</svg>

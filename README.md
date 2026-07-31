@@ -9,6 +9,7 @@ Python 3.12 / FastAPI on PostgreSQL, deployed with Docker Compose on DigitalOcea
 > Application source is private. This repository documents the architecture, the pricing model, and the design decisions behind them. Walkthroughs and demos available on request: [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com).
 
 **Links:** [countermint.io](https://countermint.io) | [app.countermint.io](https://app.countermint.io) | [Roots No Limits](https://rootsnolimits.com) | [LinkedIn](https://linkedin.com/in/raymondkraft)
+
 **Demo:** [Customer Quote](https://app.countermint.io/q/5eiJMiqsuZgLrZdtKfYuze3W8RrgL6qYuw4bIcIbkvw)
 
 ---

@@ -233,12 +233,77 @@ This codebase is built with AI-assisted engineering workflows: specs and plans w
 
 ## Screenshots
 
-<!-- Replace with real files. 4-6 images. Use a demo dealer with fictional inventory. -->
+Captured from a demo dealer workspace with fictional business details. Spot prices, sold-comparable data and grading references are real.
 
-| | |
-|---|---|
-| ![Live quote](screenshots/live-quote.png)<br/>*Line items repricing against live spot* | ![Counter-offer](screenshots/counter-offer.png)<br/>*Customer-side remote acceptance and counter-offer* |
-| ![Dealer bands](screenshots/dealer-bands.png)<br/>*Per-dealer bands and biases across spot, premium and sheet pricing* | ![Provenance](screenshots/provenance.png)<br/>*Value provenance: a quoted number traced to its source and rule* |
+### Vision intake: one photograph, many line items
+
+<p align="center">
+  <img src="screenshots/vision-intake-segmented.png" width="900" alt="Six graded coins segmented from a single photograph into individual staged line items">
+</p>
+
+<p align="center"><sub>A single photo of six graded slabs, segmented into individual items. Each is matched against the bullion dictionary for metal, weight and purity; anything the label does not carry is flagged for manual confirmation rather than guessed.</sub></p>
+
+<p align="center">
+  <img src="screenshots/vision-intake-processing.png" width="900" alt="Slab label being read during appraisal intake">
+</p>
+
+<p align="center"><sub>Intake in progress. Live spot for all four metals is pinned to the header with its source and timestamp.</sub></p>
+
+### Melt and collector premium, priced separately
+
+<p align="center">
+  <img src="screenshots/quote-melt-premium-breakdown.png" width="900" alt="Quote line items showing melt value, numismatic premium, true comp, suggested range and final offer">
+</p>
+
+<p align="center"><sub>Every line item exposes melt value, numismatic premium, current true comp, the suggested range produced by the dealer's own rules, and the final offer. The components are never shown as one blended number.</sub></p>
+
+<p align="center">
+  <img src="screenshots/valuation-detail-provenance.png" width="900" alt="Valuation detail showing each comparable normalized against spot at its own sale date">
+</p>
+
+<p align="center"><sub>Value provenance. Each comparable is normalized against the spot price <em>at its own sale date</em> before the collector premium is isolated, so a comp sold at a different gold price still contributes a meaningful premium. Dealer include/exclude decisions recalculate the premium deterministically.</sub></p>
+
+<p align="center">
+  <img src="screenshots/comp-outlier-rejection.png" width="900" alt="Twenty-five comparables fetched, nine included after automatic outlier rejection">
+</p>
+
+<p align="center"><sub>Automatic outlier rejection: 25 fetched, 9 included. Rejections carry a reason — poor match, multi-coin lot, bulk anomaly — and the dealer can override any of them.</sub></p>
+
+### Dealer policy, versioned and reproducible
+
+<p align="center">
+  <img src="screenshots/dealer-workspace-settings.png" width="760" alt="Dealer workspace settings covering quote branding, quote behaviour, pricing defaults and BYOK Greysheet integration">
+</p>
+
+<p align="center"><sub>Workspace configuration. Quote-sheet branding, quote validity and alt-channel fee assumptions, pricing defaults, and bring-your-own-key CDN Greysheet integration: a dealer supplies their own credentials for wholesale grid valuations, with no licensing markup from us. Without a key, Greysheet bid and ask stay available as manual entry, and either path re-anchors the active margin rules.</sub></p>
+
+<p align="center">
+  <img src="screenshots/dealer-pricing-rules.png" width="900" alt="Versioned pricing rule sets with margin bands and premium decay tiers">
+</p>
+
+<p align="center"><sub>Margin bands by metal, value band, grade and key-date status. Rule sets are versioned: saving activates a new version, and every historical quote stays reproducible against the version that priced it. Premium decay tiers are opt-in and dealer-configured, never assumed universal.</sub></p>
+
+<p align="center">
+  <img src="screenshots/out-of-band-override.png" width="900" alt="Out-of-band price override awaiting approval, recorded in the audit trail">
+</p>
+
+<p align="center"><sub>Pricing outside the suggested range is an override, not a silent edit. It requires a permissioned approver and is recorded in the audit trail. Greysheet values can be keyed manually from the printed magazine to re-anchor the band.</sub></p>
+
+### Customer-facing quote
+
+<p align="center">
+  <img src="screenshots/customer-quote-spot-drift.png" width="900" alt="Customer quote showing spot at issuance versus live spot, with accept and counter actions">
+</p>
+
+<p align="center"><sub>The customer sees spot at issuance alongside live spot and the drift between them, melt value beside the offer, and can accept or counter remotely. Accepting locks the value; the snapshot is immutable from that point.</sub></p>
+
+### Access control
+
+<p align="center">
+  <img src="screenshots/staff-seats-rbac.png" width="900" alt="Staff seats and role-based permissions">
+</p>
+
+<p align="center"><sub>Seat-limited staff management with granular permissions: who may finalize outside the suggested range, who may approve another member's override, who may edit pricing rules.</sub></p>
 
 ---
 

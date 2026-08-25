@@ -6,15 +6,17 @@ CounterMint maintains a separate, access-controlled founder sandbox for CounterM
 
 > **Commercial boundary:** CDN/Greysheet is a third-party publisher. This sandbox does not imply affiliation, endorsement, production authorization, redistribution rights, or general customer availability. Dealer BYOK activation and any public CDN-derived display remain disabled pending CDN's written authorization and a signed integration addendum. Final licensing interpretation belongs to CDN and counsel.
 
+## The visible GSID control is the entry point
+
 <p align="center">
   <a href="../screenshots/cdn-gsid-appraisal.png">
-    <img src="../screenshots/cdn-gsid-appraisal.png" width="1100" alt="CounterMint appraisal intake with distinct GSID, PCGS catalog number, Friedberg number, grade, metal, weight, and purity fields">
+    <img src="../screenshots/cdn-gsid-appraisal.png" width="1100" alt="Standard CounterMint appraisal intake showing the GSID control that leads into the separate enhanced CDN sandbox workspace">
   </a>
 </p>
 
-<p align="center"><em>This screen demonstrates catalog-identity intake inside the internal evaluation path. It does not show provider-returned wholesale values and is not evidence of a public CDN partnership or production authorization.</em></p>
+<p align="center"><em>This is the standard New Appraisal screen, not the dedicated sandbox UI. GSID is the controlled entry point. In sandbox mode, resolving a supported GSID opens a separate enhanced dealer workspace with detailed item insights, protected reference context, independent cross-checks, versioned rule output, staging controls, and a contained DRAFT quote preview. That enhanced workspace is intentionally not pictured here.</em></p>
 
-## What the sandbox demonstrates
+## What opens behind that control
 
 | Capability | CounterMint behavior |
 |---|---|
@@ -27,6 +29,12 @@ CounterMint maintains a separate, access-controlled founder sandbox for CounterM
 | Derived offer | Applies the dealer's versioned range and recommendation logic to create a CounterMint-owned result |
 | Quote staging | Lets the dealer add, inspect, edit, or remove staged items before generating a quote |
 | Contained preview | Uses the actual customer renderer in a non-mutating DRAFT simulation without issuing, sharing, messaging, or persisting a public-link action |
+
+## Why the enhanced sandbox UI is not pictured
+
+CDN's published [API Terms of Use and License Agreement](https://www.greysheet.com/cms/1053/) treats GSID, catalog metadata, retail pricing, and wholesale pricing as different licensed-data classes. Public display rights differ by class, and wholesale values require prior written permission.
+
+For that reason, this portfolio does not publish a real sandbox screenshot with only the prices blurred. A capture can still reveal licensed metadata, reference-ladder structure, branding, or other provider-returned context after the obvious numbers are covered. A future public walkthrough should use a fully synthetic demonstration record with no provider-returned data, or a specific capture set approved by CDN in writing. Until then, this page describes CounterMint's UI and workflow in text without presenting the normal appraisal screenshot as proof of the additional sandbox screens.
 
 ## End-to-end private workflow
 

@@ -11,7 +11,7 @@ The published narrative lives in the [full product tour](../docs/product-tour.md
 | `quote-studio-image-controls.png` | Frame, fit, anchors, pan, zoom, image adjustments, overlay, and two-step image acceptance |
 | `quote-studio-customer-actions.png` | Configurable action labels over fixed accept/counter/terminal-decline semantics |
 | `pricing-rules-default.png` | Versioned default offer range and collector-premium protection after spot movement |
-| `cdn-gsid-appraisal.png` | Distinct GSID, PCGS catalog, Friedberg, certification, grade, metal, weight, and purity identity fields in the internal evaluation path |
+| `cdn-gsid-appraisal.png` | Standard appraisal intake and the GSID entry point; this is not a capture of the separate enhanced sandbox UI |
 | `staff-roles-attribution-redacted.png` | Role hierarchy, status, pricing authority, activity, and quote-display attribution with every contact field permanently redacted |
 
 The unsanitized staff source is intentionally not stored in this repository. The published derivative uses opaque raster redaction; an OCR pass confirmed that no email address or phone number remains readable.

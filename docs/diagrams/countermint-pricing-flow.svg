@@ -26,7 +26,7 @@
 
   <rect x="0" y="0" width="1540" height="74" fill="#12283f"/>
   <text x="770" y="33" class="hd" font-size="25" text-anchor="middle">CounterMint™ — Quote Lifecycle &amp; Pricing Engine</text>
-  <text x="770" y="56" class="sub" font-size="13.5" text-anchor="middle">Melt separated from collector premium · Live repricing · Immutable on acceptance · Every number traceable</text>
+  <text x="770" y="56" class="sub" font-size="13.5" text-anchor="middle">Melt separated from collector premium · Open-quote spot drift · Accepted observations preserved · Retention-safe lineage</text>
 
   <!-- ================= COL 1: QUOTE LIFECYCLE ================= -->
   <text x="24" y="103" class="grp">1 · QUOTE LIFECYCLE (DEALER &amp; CUSTOMER)</text>
@@ -44,40 +44,40 @@
 
   <circle cx="52" cy="286" r="13" fill="#35608f"/><text x="52" y="290" class="num" text-anchor="middle">3</text>
   <text x="78" y="283" class="ttl" font-size="12.5">Valuation</text>
-  <text x="78" y="301" class="xs">Melt and collector premium computed</text>
-  <text x="78" y="317" class="xs">separately, then dealer policy applied.</text>
+  <text x="78" y="301" class="xs">Metal lines split melt from premium;</text>
+  <text x="78" y="317" class="xs">dealer policy follows item evidence.</text>
 
   <circle cx="52" cy="356" r="13" fill="#35608f"/><text x="52" y="353" class="num" text-anchor="middle">4</text>
-  <text x="78" y="353" class="ttl" font-size="12.5">Quote assembled</text>
-  <text x="78" y="371" class="xs">Line items priced, provenance attached,</text>
+  <text x="78" y="353" class="ttl" font-size="12.5">Quote issued</text>
+  <text x="78" y="371" class="xs">Presentation + baseline spot frozen;</text>
   <text x="78" y="387" class="xs">quote sent as a live link.</text>
 
   <circle cx="52" cy="426" r="13" fill="#35608f"/><text x="52" y="430" class="num" text-anchor="middle">5</text>
-  <text x="78" y="423" class="ttl" font-size="12.5">Live while open</text>
-  <text x="78" y="441" class="xs">Every item reprices as spot moves.</text>
-  <text x="78" y="457" class="xs">The customer sees the current number.</text>
+  <text x="78" y="423" class="ttl" font-size="12.5">Eligible drift while open</text>
+  <text x="78" y="441" class="xs">Metal-bearing lines follow latest normalized spot.</text>
+  <text x="78" y="457" class="xs">Currency / non-metal lines do not.</text>
 
   <circle cx="52" cy="496" r="13" fill="#c07a34"/><text x="52" y="500" class="num" text-anchor="middle">6</text>
-  <text x="78" y="493" class="ttl" font-size="12.5" fill="#8a4a12">Counter-offer (optional)</text>
-  <text x="78" y="511" class="xs">Customer proposes a number remotely.</text>
-  <text x="78" y="527" class="xs">Dealer accepts, declines or re-quotes.</text>
+  <text x="78" y="493" class="ttl" font-size="12.5" fill="#8a4a12">Customer response</text>
+  <text x="78" y="511" class="xs">Customer accepts, counters, or declines an item.</text>
+  <text x="78" y="527" class="xs">Dealer accepts, rejects, or counters back.</text>
 
   <circle cx="52" cy="566" r="13" fill="#4f8a72"/><text x="52" y="570" class="num" text-anchor="middle">7</text>
-  <text x="78" y="563" class="ttl" font-size="12.5" fill="#1d4736">Acceptance freezes everything</text>
-  <text x="78" y="581" class="xs">Inputs, rules and outputs captured as an</text>
-  <text x="78" y="597" class="xs">immutable snapshot. Spot can move freely.</text>
+  <text x="78" y="563" class="ttl" font-size="12.5" fill="#1d4736">Customer acceptance captures value</text>
+  <text x="78" y="581" class="xs">Exact values + spot tick append to history;</text>
+  <text x="78" y="597" class="xs">dealer confirms or opens review / counter.</text>
 
   <circle cx="52" cy="636" r="13" fill="#35608f"/><text x="52" y="640" class="num" text-anchor="middle">8</text>
-  <text x="78" y="633" class="ttl" font-size="12.5">Settlement &amp; record</text>
-  <text x="78" y="651" class="xs">Documents refresh automatically; the</text>
-  <text x="78" y="667" class="xs">transaction and its lineage are retained.</text>
+  <text x="78" y="633" class="ttl" font-size="12.5">Confirmed or reviewed record</text>
+  <text x="78" y="651" class="xs">Accepted observation, presentation, and</text>
+  <text x="78" y="667" class="xs">policy-compliant lineage are preserved.</text>
 
   <rect x="44" y="686" width="316" height="50" rx="6" fill="#f1f6f4" stroke="#7ba894"/>
   <text x="58" y="706" class="xs" font-weight="700" fill="#1d4736">The failure mode this prevents</text>
-  <text x="58" y="724" class="xs">A quote silently repricing after the handshake.</text>
+  <text x="58" y="724" class="xs">A customer-accepted observation being silently overwritten.</text>
 
   <!-- ================= COL 2: PRICING ENGINE ================= -->
-  <text x="404" y="103" class="grp">2 · PRICING ENGINE (PER LINE ITEM)</text>
+  <text x="404" y="103" class="grp">2 · PRICING ENGINE (ELIGIBLE METAL LINE)</text>
   <rect x="404" y="112" width="452" height="640" rx="8" fill="#fbfcfe" stroke="#35608f" stroke-width="1.4"/>
 
   <rect x="424" y="132" width="412" height="42" rx="7" fill="#eef3fa" stroke="#5b7ea8"/>
@@ -99,8 +99,8 @@
   <text x="654" y="216" class="ttl" font-size="11.5" fill="#392c63">Track B · Premium</text>
   <text x="654" y="236" class="xs">Collector value above melt</text>
   <rect x="654" y="246" width="168" height="26" rx="5" fill="#ffffff" stroke="#a89ccb"/>
-  <text x="662" y="263" class="mono" fill="#392c63">norm(comps) − melt</text>
-  <text x="654" y="290" class="xs">Moves slowly with the market</text>
+  <text x="662" y="263" class="mono" fill="#392c63">avg(sale − melt@date)</text>
+  <text x="654" y="290" class="xs">Moves with collector evidence</text>
   <text x="654" y="308" class="xs">Normalized, outliers rejected</text>
 
   <line x1="522" y1="324" x2="522" y2="352" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#ag)"/>
@@ -123,14 +123,14 @@
 
   <rect x="424" y="572" width="412" height="52" rx="7" fill="#dfe9f6" stroke="#35608f"/>
   <text x="440" y="592" class="ttl" font-size="12">Priced line item</text>
-  <text x="440" y="611" class="xs">Re-evaluated continuously while the quote stays open</text>
+  <text x="440" y="611" class="xs">Follows eligible spot drift while the quote stays open</text>
 
   <line x1="630" y1="624" x2="630" y2="652" stroke="#4f8a72" stroke-width="1.8" marker-end="url(#ag)"/>
 
   <rect x="424" y="652" width="412" height="84" rx="7" fill="#e7f0ec" stroke="#4f8a72" stroke-width="1.6"/>
-  <text x="440" y="672" class="ttl" font-size="12" fill="#14301f">On acceptance: frozen snapshot</text>
-  <text x="440" y="692" class="xs">Every input, every rule and every resulting number is captured.</text>
-  <text x="440" y="712" class="xs">Later spot movement cannot alter an agreed price.</text>
+  <text x="440" y="672" class="ttl" font-size="12" fill="#14301f">On acceptance: append observation</text>
+  <text x="440" y="692" class="xs">Exact values, rules, provenance, and spot tick enter history.</text>
+  <text x="440" y="712" class="xs">Review may reopen the line; it cannot overwrite the observation.</text>
   <text x="440" y="730" class="xs" font-weight="700" fill="#1d4736">Guarded by a dedicated pricing-drift regression suite.</text>
 
   <!-- ================= COL 3: DATA PIPELINE ================= -->
@@ -139,35 +139,35 @@
 
   <rect x="900" y="132" width="190" height="104" rx="7" fill="#f7f0e4" stroke="#a8873f"/>
   <text x="914" y="152" class="ttl" font-size="11.5" fill="#3d2f13">Spot feed</text>
-  <text x="914" y="172" class="xs">MetalpriceAPI</text>
-  <text x="914" y="190" class="xs">Au · Ag · Pt · Pd</text>
+  <text x="914" y="172" class="xs">MetalpriceAPI · provider-delayed</text>
+  <text x="914" y="190" class="xs">Core + Insights catalog</text>
   <text x="914" y="212" class="xs" font-weight="700" fill="#6b5116">60-second refresh</text>
-  <text x="914" y="228" class="xs">Drives melt, live</text>
+  <text x="914" y="228" class="xs">Drives melt + local sampled series</text>
 
   <rect x="1103" y="132" width="190" height="104" rx="7" fill="#f7f0e4" stroke="#a8873f"/>
   <text x="1117" y="152" class="ttl" font-size="11.5" fill="#3d2f13">Sold comparables</text>
   <text x="1117" y="172" class="xs">sold-comps.com</text>
   <text x="1117" y="190" class="xs">eBay sold listings</text>
-  <text x="1117" y="212" class="xs" font-weight="700" fill="#6b5116">Polled every 60s</text>
+  <text x="1117" y="212" class="xs" font-weight="700" fill="#6b5116">On demand + cached</text>
   <text x="1117" y="228" class="xs">Drives premium</text>
 
   <rect x="1306" y="132" width="190" height="104" rx="7" fill="#faf6ee" stroke="#c4a561" stroke-dasharray="5 4"/>
   <text x="1320" y="152" class="ttl" font-size="11.5" fill="#6b5116">CDN / Greysheet</text>
-  <text x="1320" y="172" class="xs" fill="#7a6a45">Published sheet pricing</text>
-  <text x="1320" y="190" class="xs" fill="#7a6a45">GSID resolution built</text>
-  <rect x="1320" y="200" width="106" height="19" rx="9" fill="#e8d9bf" stroke="#a8873f"/>
-  <text x="1373" y="214" class="xs" text-anchor="middle" fill="#6b5116" font-weight="700">ACCESS PENDING</text>
-  <text x="1320" y="232" class="xs" fill="#7a6a45">Client + fixtures complete</text>
+  <text x="1320" y="172" class="xs" fill="#7a6a45">Internal evaluation sandbox</text>
+  <text x="1320" y="190" class="xs" fill="#7a6a45">Identity + adapter implemented</text>
+  <rect x="1320" y="200" width="118" height="19" rx="9" fill="#e8d9bf" stroke="#a8873f"/>
+  <text x="1379" y="214" class="xs" text-anchor="middle" fill="#6b5116" font-weight="700">PRODUCTION OFF</text>
+  <text x="1320" y="232" class="xs" fill="#7a6a45">Written authorization pending</text>
 
   <line x1="995" y1="236" x2="995" y2="264" stroke="#a8873f" stroke-width="1.6" marker-end="url(#ao)"/>
   <line x1="1198" y1="236" x2="1198" y2="264" stroke="#a8873f" stroke-width="1.6" marker-end="url(#ao)"/>
   <line x1="1401" y1="236" x2="1401" y2="264" stroke="#c4a561" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ao)"/>
 
   <rect x="900" y="264" width="596" height="96" rx="7" fill="#dfe9f6" stroke="#35608f" stroke-width="1.6"/>
-  <text x="916" y="286" class="ttl" font-size="12.5">Internal Data API: the only door to a provider</text>
-  <text x="916" y="308" class="xs">• Cached, deduplicated and rate-controlled: metered calls are made once, not per service</text>
-  <text x="916" y="328" class="xs">• One adapter per provider, so a contract change is one fix rather than scattered call sites</text>
-  <text x="916" y="348" class="xs">• Cost becomes observable at a single point, which is the only way it becomes controllable</text>
+  <text x="916" y="286" class="ttl" font-size="12.5">Provider gateway inside FastAPI</text>
+  <text x="916" y="308" class="xs">• Provider-specific caching, deduplication, rate control, and retention policy</text>
+  <text x="916" y="328" class="xs">• One adapter per provider, so a contract change has one repair boundary</text>
+  <text x="916" y="348" class="xs">• Cost and failure become observable at one accountable point</text>
 
   <line x1="1198" y1="360" x2="1198" y2="388" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#a)"/>
 
@@ -180,18 +180,18 @@
   <line x1="1198" y1="480" x2="1198" y2="508" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#ag)"/>
 
   <rect x="900" y="508" width="596" height="84" rx="7" fill="#e7f0ec" stroke="#4f8a72" stroke-width="1.6"/>
-  <text x="916" y="530" class="ttl" font-size="12.5" fill="#14301f">Central source of truth (PostgreSQL 16)</text>
-  <text x="916" y="552" class="xs">Every client surface reads the same normalized value from the same store. No client</text>
-  <text x="916" y="572" class="xs">talks to a provider directly, and no two surfaces can disagree about today's spot.</text>
+  <text x="916" y="530" class="ttl" font-size="12.5" fill="#14301f">Canonical pricing records (PostgreSQL 16)</text>
+  <text x="916" y="552" class="xs">Client surfaces read normalized records with explicit source timestamps. Provider</text>
+  <text x="916" y="572" class="xs">access stays server-side; cache and retention behavior remain source-specific.</text>
 
   <line x1="1198" y1="592" x2="1198" y2="620" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#ag)"/>
 
   <rect x="900" y="620" width="290" height="112" rx="7" fill="#eef3fa" stroke="#5b7ea8"/>
-  <text x="916" y="641" class="ttl" font-size="12">Pushed to open quotes</text>
-  <text x="916" y="661" class="xs">Dealer dashboard reprices live</text>
-  <text x="916" y="681" class="xs">Customer quote view follows</text>
-  <text x="916" y="701" class="xs">Integrations and webhooks fire</text>
-  <text x="916" y="721" class="xs">Frozen quotes are never touched</text>
+  <text x="916" y="641" class="ttl" font-size="12">Read by open quote views</text>
+  <text x="916" y="661" class="xs">Dealer and customer clients poll</text>
+  <text x="916" y="681" class="xs">Eligible lines display spot drift</text>
+  <text x="916" y="701" class="xs">Source timestamps stay visible</text>
+  <text x="916" y="721" class="xs">Accepted values are never overwritten</text>
 
   <rect x="1206" y="620" width="290" height="112" rx="7" fill="#f6f9fd" stroke="#5b7ea8"/>
   <text x="1222" y="641" class="ttl" font-size="12">Why centralize</text>
@@ -216,12 +216,12 @@
 
   <rect x="526" y="772" width="486" height="190" rx="8" fill="#f1f6f4" stroke="#4f8a72" stroke-width="1.4"/>
   <text x="546" y="796" class="ttl" font-size="13" fill="#1d4736">Correctness guarantees</text>
-  <text x="546" y="820" class="sm">• Frozen quotes are immutable by construction, not by policy</text>
+  <text x="546" y="820" class="sm">• Customer-accepted observations are append-only, never overwritten</text>
   <text x="546" y="842" class="sm">• Pricing-drift regression tests fail the build if that breaks</text>
-  <text x="546" y="864" class="sm">• Every number carries source and rule; lineage is queryable</text>
+  <text x="546" y="864" class="sm">• Retention-safe source + rule lineage follows provider policy</text>
   <text x="546" y="886" class="sm">• Deterministic arithmetic: no model sets a price</text>
-  <text x="546" y="908" class="sm">• 419 automated tests against a dedicated PostgreSQL database</text>
-  <text x="546" y="930" class="sm">• 20 Alembic migrations, applied on a health-checked deploy</text>
+  <text x="546" y="908" class="sm">• Automated backend and frontend suites cover risk-critical paths</text>
+  <text x="546" y="930" class="sm">• Forward-only Alembic revisions include schema-drift checks</text>
   <text x="546" y="954" class="xs" fill="#1d4736">This is the failure mode that stays invisible until it costs real money.</text>
 
   <rect x="1028" y="772" width="488" height="190" rx="8" fill="#fdf1e7" stroke="#d08a4a" stroke-width="1.4"/>
@@ -229,12 +229,12 @@
   <text x="1048" y="822" class="sm" font-weight="700" fill="#3a6b55">Used for</text>
   <text x="1048" y="842" class="sm">• Segmenting one photo of mixed inventory into line items</text>
   <text x="1048" y="862" class="sm">• Extracting date, mint, denomination, grade from images</text>
-  <text x="1048" y="882" class="sm">• Retrieval over internal dealer datasets</text>
+  <text x="1048" y="882" class="sm">• Constrained quote-style and artwork proposals</text>
   <text x="1048" y="906" class="sm" font-weight="700" fill="#8a4a12">Deliberately not used for</text>
   <text x="1048" y="926" class="sm">• Computing melt, premium, bands, biases or final price</text>
-  <text x="1048" y="946" class="sm">• Anything a dealer would have to defend to a customer</text>
+  <text x="1048" y="946" class="sm">• Making an unreviewed authoritative pricing or policy decision</text>
 
   <rect x="0" y="976" width="1540" height="34" fill="#12283f"/>
   <text x="24" y="998" class="xs" fill="#9fb4cd">CounterMint™ · Roots No Limits LLC · Private beta</text>
-  <text x="1516" y="998" class="xs" fill="#9fb4cd" text-anchor="end">v1.0 · July 2026</text>
+  <text x="1516" y="998" class="xs" fill="#9fb4cd" text-anchor="end">Architecture snapshot · reviewed August 2026</text>
 </svg>

@@ -1,6 +1,8 @@
 # ADR 0004: Every quoted number carries its source and rule
 
-**Status:** Accepted · **Date:** 2026-07
+[← Decision index](README.md) · [Project overview](../../README.md)
+
+**Status:** Accepted · **Date:** 2026-07 · **Last reviewed:** 2026-08-26
 
 ## Context
 
@@ -12,7 +14,7 @@ The same gap makes debugging archaeology. A wrong price could originate in a bad
 
 ## Decision
 
-Every component of a quoted value records the source it came from and the rule that produced it, at the time it is computed.
+Every component of a quoted value records the source it came from and the rule that produced it at computation time, subject to provider-specific retention limits.
 
 Melt records which spot value and which timestamp. Premium records which comparables contributed and what normalization was applied. Sheet pricing records the resolved GSID and the specific record matched. Each dealer band or bias records which policy was applied and what it did to the number.
 
@@ -20,7 +22,7 @@ GSID resolution is part of this: matching an item to a published sheet record is
 
 ## Consequences
 
-**Good.** A challenged price is a lookup rather than an argument. Debugging a wrong quote points at a component instead of requiring reconstruction. Combined with frozen snapshots, an accepted quote is fully explainable months later. Full data lineage is also what makes the auditability story credible to a dealer worried about their data.
+**Good.** A challenged price begins as a lookup rather than an argument. Debugging a wrong quote points at a component instead of requiring reconstruction. Combined with frozen snapshots, accepted values retain safe lineage; where licensing requires raw-value deletion, attribution and non-redistributable evidence remain without pretending the purged payload is still present.
 
 **Bad.** Provenance records are written on every valuation, which is a meaningful volume of writes for data that is mostly never read. Every pricing component now has to thread a provenance context, which is friction on every change to the engine.
 
@@ -28,6 +30,6 @@ GSID resolution is part of this: matching an item to a published sheet record is
 
 ## What I would revisit
 
-Retention is uniform. Provenance for a quote that expired unaccepted is worth far less than provenance for an accepted one, and tiering that would cut storage substantially.
+Retention is provider-specific, especially for provider-returned wholesale values. The next step is a more strongly typed cross-provider provenance envelope so retention-safe evidence has the same shape without erasing important provider differences.
 
-The dealer-facing view is also currently a debugging surface rather than a designed one. If provenance is genuinely the answer to "defend this number to a customer," it deserves a presentation built for that conversation.
+The dealer-facing view now exposes comparable evidence, match scores, and include/exclude decisions. It should evolve into an exportable dispute record and add a calibrated aggregate confidence summary without hiding the underlying evidence.

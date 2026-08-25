@@ -1,316 +1,278 @@
-# CounterMint™: Architecture Overview
+# CounterMint™
 
-**AI-assisted quoting and pricing intelligence for precious-metals and numismatic dealers.**
+**A market-aware appraisal, pricing, and quote-experience platform for coin, currency, and precious-metals dealers.**
 
-Dealers quote against a market that moves all day. CounterMint reprices every line item continuously against live spot, separates melt value from collector premium using normalized sold-comparable data, lets the customer accept or counter remotely, and freezes the accepted quote to an immutable priced snapshot.
+CounterMint takes a dealer from intake to a defensible valuation, a branded customer quote, and a governed accept/counter/decline workflow. It combines volatile metal markets, sold-comparable evidence, dealer policy, visual quote design, staff authority, and customer response history without turning any one provider—or an AI model—into an unaccountable price oracle.
 
-Python 3.12 / FastAPI on PostgreSQL, deployed with Docker Compose on DigitalOcean. Currently in private beta.
+**Private beta · Designed, built, deployed, and operated by Raymond J. Kraft**
 
-> Application source is private. This repository documents the architecture, the pricing model, and the design decisions behind them. Walkthroughs and demos available on request: [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com).
+[View a live customer quote](https://app.countermint.io/q/5eiJMiqsuZgLrZdtKfYuze3W8RrgL6qYuw4bIcIbkvw) · [Request a walkthrough](mailto:ray@rootsnolimits.com)
 
-**Links:** [countermint.io](https://countermint.io) | [app.countermint.io](https://app.countermint.io) | [Roots No Limits](https://rootsnolimits.com) | [LinkedIn](https://linkedin.com/in/raymondkraft)
+| Automated verification | Measured project footprint | Schema evolution | Core quote metals |
+|---|---|---|---|
+| **700+ backend and frontend tests** | **92.5K+ lines** across 429 source, test, configuration, and documentation files | **40+ Alembic migrations** | Gold, silver, platinum, and palladium |
 
-**Demo:** [Customer Quote](https://app.countermint.io/q/5eiJMiqsuZgLrZdtKfYuze3W8RrgL6qYuw4bIcIbkvw)
+*Private application repository snapshot measured August 24, 2026. See the [measurement basis and evidence boundaries](docs/engineering-evidence.md).*
+
+**Explore the work:** [Product tour](docs/product-tour.md) · [Quote Studio](docs/quote-studio.md) · [Market intelligence](docs/market-intelligence.md) · [System architecture](docs/architecture.md) · [Decision records](docs/decisions/) · [Roadmap](docs/roadmap.md) · [Engineering evidence](docs/engineering-evidence.md)
+
+## Latest product build — August 2026
+
+### Quote Studio v3: one renderer from design to customer response
+
+<p align="center">
+  <a href="screenshots/quote-studio-overview.png">
+    <img src="screenshots/quote-studio-overview.png" width="1100" alt="CounterMint Quote Studio showing a structured quote preview, design library, desktop mobile and print modes, clickable sections, and gated AI-assisted design controls">
+  </a>
+</p>
+
+<p align="center"><em>Click a part of the quote, edit its approved fields, preview desktop, mobile, or print, and publish a versioned design. The AI lane was switched off in this environment; the full manual editor still works.</em></p>
+
+<p align="center">
+  <a href="screenshots/quote-studio-header-artwork.png">
+    <img src="screenshots/quote-studio-header-artwork.png" width="1100" alt="Quote Studio header artwork controls showing a customer-safe quote preview, frame, fit, focal position, zoom, edge treatment, and optimized derivative workflow">
+  </a>
+</p>
+
+<p align="center"><em>This is the actual quote renderer, not a mockup. Clicking the header opens the fields bound to that section of the design JSON.</em></p>
+
+<p align="center">
+  <a href="screenshots/quote-studio-image-controls.png">
+    <img src="screenshots/quote-studio-image-controls.png" width="420" alt="Expanded Quote Studio image controls for framing, fit, focal position, zoom, brightness, contrast, saturation, overlay, and optimized derivative review">
+  </a>
+</p>
+
+<p align="center"><em>Dealers can frame, crop, position, zoom, and tune artwork without opening up arbitrary CSS or a free-form canvas.</em></p>
+
+<p align="center">
+  <a href="screenshots/quote-studio-customer-actions.png">
+    <img src="screenshots/quote-studio-customer-actions.png" width="1100" alt="Quote Studio previewing accept, counter-offer, and terminal item-decline actions with dealer-configurable presentation labels">
+  </a>
+</p>
+
+<p align="center"><em>Dealers can change the button labels and choose whether item decline appears. CounterMint still owns the state machine behind accept, counter, counter-back, reject, and terminal decline.</em></p>
+
+### Dealer controls, staff authority, and protected evaluation
+
+<p align="center">
+  <a href="screenshots/pricing-rules-default.png">
+    <img src="screenshots/pricing-rules-default.png" width="1100" alt="CounterMint versioned pricing rules showing the default offer range and Premium Protection tiers">
+  </a>
+</p>
+
+<p align="center"><em>Pricing Rules version 2 is active here. Saving a change creates a new version, so an older quote keeps the policy that priced it. Premium Protection adjusts the collector-premium side without reducing current melt.</em></p>
+
+<p align="center">
+  <a href="screenshots/staff-roles-attribution-redacted.png">
+    <img src="screenshots/staff-roles-attribution-redacted.png" width="1100" alt="CounterMint Staff and Roles workspace with public contact details redacted, showing role, permissions, activity, status, and lifecycle controls">
+  </a>
+</p>
+
+<p align="center"><em>Roles, pricing permissions, status, and staff activity live in one place. Email addresses and phone numbers are blacked out in this public image.</em></p>
+
+<p align="center">
+  <a href="screenshots/cdn-gsid-appraisal.png">
+    <img src="screenshots/cdn-gsid-appraisal.png" width="1100" alt="CounterMint appraisal intake showing distinct CDN GSID, PCGS catalog, Friedberg, certification, grade, designation, signature, metal, weight, and purity fields">
+  </a>
+</p>
+
+<p align="center"><em>The appraisal keeps GSID, PCGS catalog, Friedberg, and slab certification numbers separate. This is CounterMint's private internal sandbox, not a production CDN integration or a claim of publisher authorization.</em></p>
 
 ---
 
-## The problem
+## More than a pricing calculator
 
-A dealer quoting a customer is doing three things at once, usually in a spreadsheet:
+| Product surface | Dealer experience | Engineering boundary |
+|---|---|---|
+| **Appraisal intake** | Manual entry, multi-item image capture, label extraction, and distinct catalog identifiers | Uncertain fields are staged for confirmation instead of guessed |
+| **Explainable valuation** | Melt, collector premium, sold comps, exclusions, source, and policy are inspectable separately | Deterministic arithmetic and rule execution remain authoritative |
+| **Metals Insights** | Searchable market catalog with interactive line/candle views, ranges, intervals, freshness, and OHLC tables | Provider-delayed observations; CounterMint-native aggregation with no invented buckets |
+| **Pricing policy** | Versioned offer ranges, transaction-side controls, and Premium Protection | Historical quotes continue to resolve against the policy that priced them |
+| **Quote Studio** | Presets, click-to-edit regions, brand controls, artwork composition, customer actions, and responsive preview | Strict versioned design JSON and one shared customer/preview/print renderer |
+| **Customer negotiation** | Accept, customer counter, dealer counter-back, rejection, and terminal per-item decline | State-checked server lifecycle despite dealer-configurable labels and thresholds |
+| **Staff governance** | Invitations, roles, status, pricing authority, and dealer-approved quote attribution | Tenant-scoped authorization and append-only audit history |
+| **Internal CDN evaluation** | Catalog identity resolution and a protected reference workflow in an isolated CounterMint sandbox | No public guide, public provider data, or production activation pending written authorization |
 
-1. **Melt math.** What the metal is worth right now, per item, at this moment's spot price for gold, silver, platinum or palladium.
-2. **Collector math.** What the *coin* is worth above melt, which depends on date, mint, grade and what comparable pieces actually sold for.
-3. **Their own margin policy.** How far off each of those numbers they're willing to buy or sell, which differs per dealer, per metal, per item class.
+## CounterMint in 90 seconds
 
-Spot moves while the quote is open. Sold-comparable data is noisy and mixes melt and premium together. Published sheet pricing is a fourth input with its own lag. Doing this by hand is slow, inconsistent between staff, and quietly loses money when the market moves between quote and acceptance.
-
-CounterMint makes each of those three inputs explicit, configurable, and traceable.
+1. **Read the market.** The workspace keeps the four core quote metals visible while Metals Insights opens a wider searchable catalog and the locally sampled history CounterMint has actually received.
+2. **Capture the item.** A dealer enters it manually or photographs multiple coins and slabs. Vision assists segmentation and label extraction; uncertain fields require confirmation.
+3. **Resolve the value.** Deterministic arithmetic computes melt. Sold comparables are normalized against historical spot to isolate collector premium, with inclusion and exclusion evidence preserved.
+4. **Apply dealer policy.** Versioned ranges and Premium Protection operate on explicit inputs instead of hiding the dealer's strategy inside one opaque adjustment.
+5. **Design the quote.** Quote Studio binds branding, typography, artwork, sections, and customer actions to a validated design document rendered against safe sample data or a real customer-safe quote.
+6. **Negotiate remotely.** The customer can accept, submit a bounded counter, respond to a dealer counter, or decline an item. The dealer can configure limits, thresholds, presentation labels, and terminal decline availability.
+7. **Preserve the handshake.** Acceptance appends the exact value and spot observation. Confirmation, review, or countering creates a traceable next state without overwriting what the customer accepted.
 
 ---
 
-## What's implemented
+## Quote Studio: the quote experience is structured product state
 
-| Area | Detail |
+Quote Studio is not a free canvas, a screenshot generator, or arbitrary CSS pasted onto customer data. It is a schema-backed editor around a versioned `QuoteDesignDocument` and a shared renderer.
+
+- **Click the rendered quote.** Logo, header, customer actions, body, and footer regions open the controls bound to that section's validated JSON fields.
+- **Manipulate artwork without breaking layout.** Header artwork supports bounded pointer and keyboard positioning, locked-proportion resizing, pan, zoom, fit, edge treatment, brightness, contrast, saturation, and overlay controls.
+- **Start curated, then personalize.** Dealers can create from approved presets, duplicate designs, edit drafts, undo/redo, and preview desktop, mobile, and print before publishing.
+- **Keep media private until accepted.** Uploaded or generated artwork begins as a private proposal. CounterMint validates the raster, strips unsafe metadata into optimized derivatives, and requires review before it can enter a draft or published design.
+- **Use AI as a proposal engine.** Capability-gated pipelines can produce private text-free header artwork, symbol-first logo concepts, and bounded style proposals. AI cannot change quote values, customer data, lifecycle state, or publishing state; results remain inert until the dealer explicitly applies them.
+- **Freeze what the customer received.** Publishing activates a versioned design, while quote issuance resolves the exact presentation and assets into its immutable presentation snapshot.
+
+[Explore the Quote Studio design and safety model →](docs/quote-studio.md)
+
+---
+
+## Metals Insights: external observations, native derivation
+
+CounterMint does not claim to originate exchange data. It ingests provider-delayed observations, validates and timestamps what arrived, and then stores, aggregates, and renders its own market series in PostgreSQL.
+
+For every completed interval:
+
+- the first received observation becomes **open**;
+- observed extrema become **high** and **low**;
+- the final observation becomes **close**;
+- sample count and expected coverage stay visible;
+- empty buckets remain gaps rather than being interpolated into false history.
+
+Dealers can already switch instruments, line/candle presentation, date ranges, and sampling intervals, with accessible OHLC tables and freshness disclosures. The broader research surface remains separate from the authoritative melt path so exploratory charts cannot silently rewrite a quote.
+
+[See how CounterMint derives and governs market series →](docs/market-intelligence.md)
+
+---
+
+## Pricing policy that remains explainable later
+
+<p align="center">
+  <a href="screenshots/quote-melt-premium-breakdown.png">
+    <img src="screenshots/quote-melt-premium-breakdown.png" width="1000" alt="Earlier private-beta CounterMint UI showing separate melt value, collector premium, current comparable value, versioned dealer-policy range, and final offer">
+  </a>
+</p>
+
+<p align="center"><em><strong>Earlier private-beta UI.</strong> The layout has changed, but the contract has not: melt, collector premium, market evidence, the versioned policy range, and the final offer remain separate.</em></p>
+
+---
+
+## Customer negotiation, end to end
+
+Customer negotiation is implemented as a state machine, not a collection of cosmetic buttons:
+
+- dealer opt-in and per-item customer attempt limits;
+- manual review or direction-aware automated thresholds;
+- dealer accept, reject, or counter-back;
+- customer acceptance or rejection of a dealer counter;
+- a separate, idempotent terminal decline for one item while other quote lines remain available;
+- audit events and immutable history across every transition.
+
+Quote Studio lets the dealer choose approved labels and whether terminal decline appears, but presentation never redefines the server-owned lifecycle meaning.
+
+---
+
+## Private CDN integration sandbox
+
+CounterMint maintains a separate, access-controlled founder sandbox for CounterMint-only evaluation of a possible future Coin Dealer Newsletter integration. It is ready to support a publisher review if CDN invites or authorizes one; it is not currently a joint evaluation, partnership, or production integration. The sandbox demonstrates catalog identity across GSID, PCGS catalog, and Friedberg identifiers; grading-service and CAC context; protected reference ladders; independent melt and comparable-sales cross-checks; versioned dealer rules; and a contained customer-safe DRAFT preview.
+
+Provider-returned wholesale values remain authenticated and confined to the protected evaluation surface. Raw observations are retention-bounded, request secrets are log-redacted, and the sandbox cannot issue or share a public provider-derived quote. Dealer BYOK activation and any public CDN-derived display remain disabled pending CDN's written authorization and a signed integration addendum.
+
+**CDN/Greysheet is a third-party publisher. No affiliation, endorsement, redistribution right, or production availability is implied.**
+
+[Review the demonstrated workflow and licensing boundary →](docs/cdn-sandbox.md)
+
+---
+
+## Delivery status
+
+| Status | Scope |
 |---|---|
-| Dynamic quoting | Every line item reprices continuously against Au / Ag / Pt / Pd spot |
-| Remote acceptance | Customers review and accept quotes remotely, or return counter-offers |
-| Quote immutability | Accepted quotes freeze to an immutable priced snapshot, guarded by pricing-drift regression tests |
-| Valuation engine | Sold-comparable secondary-market data normalized to extract a per-item numismatic (collector) premium, separated from melt |
-| Dealer configuration | Per-dealer bands and biases across spot price, numismatic premium, and CDN/Greysheet pricing |
-| Sheet pricing | CDN/Greysheet client with GSID resolution and end-to-end value provenance, so every quoted number traces to the source and rule that produced it |
-| Data centralization | All client and dealer data behind a single internal API: third-party pricing calls cached, deduplicated and cost-controlled |
-| Document automation | Dealer and client documents refresh automatically rather than being regenerated by hand |
-| Computer vision | Structured item data extracted from coin and slab images for AI-assisted assessment |
-| Auth | Argon2 password hashing, JWT access tokens with refresh cookies |
-| Billing | Stripe Checkout and Customer Portal with webhook processing |
+| **Operational private beta** | Appraisal intake, deterministic pricing, sold-comp provenance, versioned dealer rules, live customer quotes, customer/dealer counter workflows, staff roles, billing, and accepted-value history |
+| **Implemented; exact release evidence remains environment-specific** | Quote Studio v3 structured editor and assets, terminal customer decline, broader Metals Insights workspace, interactive locally sampled charts, and new staff attribution controls |
+| **Implemented but capability/provider-gated** | AI-assisted Quote Studio artwork and bounded style proposals; publisher-authorization-gated CDN integration boundary |
+| **Internal CounterMint evaluation only** | CounterMint-controlled CDN sandbox; no general customer availability or public provider-data display |
+| **Roadmap, not shipped** | Evidence-backed technical-analysis context, richer chart interaction, AI Rarity Insights, native mobile clients, and a cloud object-store adapter |
 
-**In progress:** commercial CDN/Greysheet API access is under negotiation with the publisher; the client, GSID resolution and test fixtures are complete and tested against recorded fixtures.
-
-**Planned, not built:** native iOS/Android apps.
+The product code is private. This repository publishes architecture, operating boundaries, product evidence, and consequential design decisions without exposing proprietary source or customer secrets.
 
 ---
 
-## Platform topology
-
-Full-resolution topology and technical design, covering the hosting split, service boundaries, external data providers, and security posture:
+## Architecture at a glance
 
 <p align="center">
-  <img src="docs/diagrams/countermint-topology.svg" width="1000" alt="CounterMint platform topology and technical design">
+  <a href="docs/diagrams/countermint-topology.svg">
+    <img src="docs/diagrams/countermint-topology.svg" width="1000" alt="CounterMint platform topology showing client surfaces, FastAPI services, PostgreSQL, tenant-scoped object storage, and external providers">
+  </a>
 </p>
 
-<p align="center"><sub>Marketing site, authenticated SPA, and headless API, with the AI orchestration layer and external pricing providers. Native mobile clients are planned, not shipped.</sub></p>
+<p align="center"><em>A headless FastAPI application serves the dealer SPA and customer quote surface. PostgreSQL is authoritative; external market data enters through one normalized provider gateway.</em></p>
 
-## System architecture
+**[Open the full-resolution topology →](docs/diagrams/countermint-topology.svg)**
 
-```mermaid
-%%{init: {'theme':'base','themeVariables':{
-  'fontFamily':'ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif',
-  'fontSize':'13px',
-  'primaryColor':'#eef3fa',
-  'primaryTextColor':'#12283f',
-  'primaryBorderColor':'#7f9dc2',
-  'lineColor':'#7d90a8',
-  'textColor':'#12283f',
-  'clusterBkg':'#fafbfd',
-  'clusterBorder':'#d4dde8',
-  'edgeLabelBackground':'#ffffff'
-}}}%%
-flowchart TB
-    subgraph Clients["&nbsp;Clients&nbsp;"]
-      direction LR
-      DEAL["Dealer SPA<br/>React 18 · Cloudflare Pages"]
-      CUST["Customer quote view<br/>accept · counter-offer"]
-    end
+Five boundaries do most of the risk-reduction work:
 
-    subgraph Edge["&nbsp;Edge&nbsp;"]
-      CADDY["Caddy<br/>TLS · reverse proxy"]
-    end
+1. **Pricing stays deterministic.** Models assist extraction, research, and presentation work; they do not compute melt, collector premium, policy bands, or final price.
+2. **Providers have one door.** Caching, request deduplication, normalization, rate control, and spend observability live behind one internal data gateway.
+3. **Open and accepted values have different authority.** Open metal-bearing lines can follow the market; customer-accepted observations are append-only even when review creates a new counter path.
+4. **Every value carries retention-safe lineage.** Source attribution, timestamps, normalization decisions, and dealer rules are retained subject to provider policy.
+5. **Tenant context is structural.** Authentication, roles, media keys, settings, AI budgets, and data access are scoped to the dealer workspace.
 
-    subgraph App["&nbsp;FastAPI · Python 3.12 · async&nbsp;"]
-      AUTH["Auth<br/>Argon2 · JWT"]
-      QUOTE["Quote Service<br/>repricing · counter-offers · freeze"]
-      VAL["Valuation Engine<br/>melt + numismatic premium"]
-      PROV["Provenance<br/>source + rule per value"]
-      GATE["Internal Data API<br/>cache · dedupe · cost control"]
-      VISION["Vision Appraisal<br/>multi-item segmentation"]
-      DOCS["Document Refresh"]
-    end
+The detailed [architecture guide](docs/architecture.md) separates current, release-gated, provider-gated, private-evaluation, and planned components.
 
-    subgraph Storage["&nbsp;Storage&nbsp;"]
-      direction LR
-      PG[("PostgreSQL 16<br/>SQLAlchemy 2.0 · Alembic")]
-      R2[("Cloudflare R2<br/>images · documents")]
-    end
+## Four decisions that define the system
 
-    subgraph Providers["&nbsp;External Providers&nbsp;"]
-      direction LR
-      SPOT["Spot price feeds<br/>Au · Ag · Pt · Pd"]
-      COMPS["Sold-comparable data"]
-      CDN["CDN / Greysheet<br/>access pending"]
-      STRIPE["Stripe"]
-    end
+| Constraint | Decision | Deliberate cost | Record |
+|---|---|---|---|
+| Spot risk and collector risk behave differently | Compute melt and collector premium separately, then apply policy to each | More normalization work; sparse comps remain a real limitation | [ADR 0001](docs/decisions/0001-melt-vs-numismatic-premium.md) |
+| A live market must not erase what the customer accepted | Freeze presentation and baseline spot on issuance, then append the accepted observation during the customer/dealer handshake | More storage and distinct open, accepted, reviewed, and confirmed paths to keep aligned | [ADR 0002](docs/decisions/0002-immutable-quote-snapshots.md) |
+| Metered provider calls become expensive and inconsistent when scattered | Put every external pricing source behind one internal gateway | A new reliability boundary and explicit cache-staleness tradeoffs | [ADR 0003](docs/decisions/0003-centralized-pricing-data-api.md) |
+| A dealer must be able to defend a number later | Persist retention-safe source and rule lineage for every pricing component | Higher write volume, provider-specific purges, and provenance threaded through the engine | [ADR 0004](docs/decisions/0004-value-provenance.md) |
 
-    DEAL & CUST --> CADDY --> AUTH --> QUOTE
-    QUOTE --> VAL --> PROV
-    VAL --> GATE
-    GATE --> SPOT & COMPS & CDN
-    GATE --> PG
-    QUOTE --> PG
-    VISION --> R2
-    VISION --> PG
-    DOCS --> R2
-    QUOTE --> STRIPE
+## Engineering evidence
 
-    classDef client fill:#eef3fa,stroke:#5b7ea8,stroke-width:1.2px,color:#12283f;
-    classDef edge   fill:#f0eef8,stroke:#7a6ca8,stroke-width:1.2px,color:#221a3d;
-    classDef svc    fill:#dfe9f6,stroke:#35608f,stroke-width:1.2px,color:#0f2440;
-    classDef store  fill:#e7f0ec,stroke:#4f8a72,stroke-width:1.2px,color:#14301f;
-    classDef ext    fill:#f7f0e4,stroke:#a8873f,stroke-width:1.2px,color:#3d2f13;
+| Risk | Control |
+|---|---|
+| Silent price drift | Dedicated regression coverage for issued, accepted, reviewed, and confirmed value boundaries |
+| Cross-tenant leakage | Adversarial isolation tests across data, credentials, media, AI work, and public routes |
+| Migration failure | Full-chain replay, restored-backup rehearsal, and Alembic schema-drift checks |
+| Billed AI-job ambiguity or duplicate spend | Durable Quote Studio job reconciliation before any provider retry |
+| Wrong code released | Exact-commit test receipts and post-deploy API/frontend revision verification |
 
-    class DEAL,CUST client;
-    class CADDY edge;
-    class AUTH,QUOTE,VAL,PROV,GATE,VISION,DOCS svc;
-    class PG,R2 store;
-    class SPOT,COMPS,CDN,STRIPE ext;
-```
+The [engineering evidence note](docs/engineering-evidence.md) contains the measurement basis, application-language breakdown, test-count boundary, schema snapshot, and release-evidence limits.
 
-## Pricing flow: one line item
+### AI-assisted engineering, human accountability
 
-```mermaid
-%%{init: {'theme':'base','themeVariables':{
-  'fontFamily':'ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif',
-  'fontSize':'13px',
-  'primaryColor':'#dfe9f6',
-  'primaryTextColor':'#0f2440',
-  'primaryBorderColor':'#35608f',
-  'lineColor':'#7d90a8',
-  'textColor':'#12283f',
-  'actorBkg':'#dfe9f6',
-  'actorBorder':'#35608f',
-  'actorTextColor':'#0f2440',
-  'signalColor':'#5f7288',
-  'signalTextColor':'#12283f',
-  'labelBoxBkg':'#eef3fa',
-  'labelBoxBorderColor':'#7f9dc2',
-  'labelTextColor':'#12283f',
-  'noteBkg':'#f7f0e4',
-  'noteBorderColor':'#a8873f'
-}}}%%
-sequenceDiagram
-    participant D as Dealer
-    participant Q as Quote Service
-    participant V as Valuation Engine
-    participant G as Internal Data API
-    participant P as Provenance
-    participant C as Customer
-
-    D->>Q: add item to quote
-    Q->>V: value item
-    V->>G: spot (Au/Ag/Pt/Pd)
-    V->>G: sold comparables
-    V->>G: CDN / Greysheet record (GSID resolved)
-    G-->>V: cached or fetched values
-    V->>V: melt = weight × fineness × spot
-    V->>V: numismatic premium = normalized comps − melt
-    V->>V: apply dealer bands and biases
-    V->>P: record source + rule for each component
-    V-->>Q: priced line item
-    Q-->>C: live quote (reprices as spot moves)
-    C->>Q: accept or counter-offer
-    Q->>Q: on accept, freeze immutable snapshot
-```
+I use AI to accelerate implementation inside a spec-first, review-gated workflow. I own the domain model, architecture, code review, test strategy, deployments, and production operation. Generated implementation does not merge because it looks plausible; it has to satisfy the same invariants, migration checks, and release gates as any other change.
 
 ---
 
-## Design decisions
+## Near-term roadmap
 
-Full ADRs in [`docs/decisions/`](docs/decisions). The three that matter most:
+### Explainable technical-analysis context
 
-### Separating melt from numismatic premium
+Add basic trend and momentum indicators over completed locally sampled candles, with versioned calculations, traceable inputs, coverage and freshness gates, expiry, and decision-support-only language. Signals will not feed the deterministic offer engine or represent executable trading advice.
 
-Sold-comparable data reports one number: what someone paid. That number is melt plus collector premium plus noise, and treating it as a single price makes every downstream control useless: a dealer can't apply a different policy to metal risk than to collector risk when the two are fused.
+### Richer market exploration
 
-The valuation engine normalizes comparables and subtracts computed melt to isolate a per-item numismatic premium. Melt then moves with spot, minute to minute, while premium moves slowly with the collector market. Dealers configure bands and biases independently against each. It's more work than quoting off raw comps, and it's the difference between a pricing tool and a spreadsheet with a chart on it.
+Extend the existing interactive line/candle, range, and interval experience with deeper comparison and inspection tools while preserving gaps and provider-delay disclosures.
 
-### Immutable quote snapshots
+### AI Rarity Insights
 
-A quote is a commitment against a moving market. If a customer accepts on Tuesday and the system recomputes on Wednesday's spot, the dealer's position silently changes and nobody notices until reconciliation. Acceptance freezes the full priced snapshot (every input, every rule, every resulting number), and dedicated regression tests exist specifically to catch pricing drift, because this is the failure mode that would be invisible until it cost real money.
+Add a tenant-scoped, allowance-metered workflow for requesting an in-depth review of one coin from a configured foundation model. Query allowances and provider budgets will scale by dealer subscription tier. Outputs will remain guarded, non-authoritative research—not authentication, grading, provenance, rarity certification, or pricing authority.
 
-### Centralizing third-party data behind an internal API
-
-Every service could call the pricing providers directly. Instead all of them go through one internal API. Three reasons: third-party pricing calls are metered and expensive, so caching and deduplication belong in exactly one place; provider contracts change, and one adapter is cheaper to fix than call sites scattered through the codebase; and cost is only controllable if it's observable at a single point.
-
-### Value provenance
-
-Every quoted number carries the source and the rule that produced it. A dealer challenging a price gets an answer instead of an argument, and debugging a wrong quote is a lookup rather than an investigation.
+[Review roadmap principles, gates, and later work →](docs/roadmap.md)
 
 ---
 
-## Quote lifecycle and pricing engine
+## Known limitations
 
-The quote from intake to frozen snapshot, how a single line item is actually priced, and where the market data comes from:
+- The current media adapter uses a persistent local object-store volume behind a provider-neutral interface; an R2/S3 adapter is not yet wired.
+- Premium confidence is not yet surfaced as a first-class dealer control. Sparse comparable coverage remains visible instead of being hidden behind false certainty.
+- Optional AI design capabilities require provider, worker, storage, budget, and operator readiness; the deterministic Quote Studio must remain usable when those lanes are disabled.
+- CDN sandbox capability is not a claim of partnership, production authorization, or redistribution rights.
 
-<p align="center">
-  <img src="docs/diagrams/countermint-pricing-flow.svg" width="1000" alt="CounterMint quote lifecycle, pricing engine and market data pipeline">
-</p>
-
-<p align="center"><sub>Melt and collector premium are computed on separate tracks and only combined after dealer policy is applied. Models assist identification; they never set a price.</sub></p>
-
----
-
-## Engineering practices
-
-- **419 automated tests** (pytest) passing against a live PostgreSQL test database
-- **20 Alembic migrations**, applied on deploy with health-checked rollout
-- Containerized deploy: `docker compose build` → `alembic upgrade head` → rolling restart → `/healthz` verification
-- ~48,000 lines of Python and JSX across the codebase (excluding lockfiles and generated artifacts)
-
-### On AI-assisted development
-
-This codebase is built with AI-assisted engineering workflows: specs and plans written first, implementation generated and reviewed, then gated behind the test suite, migration checks, and a written code review per workstream before anything merges or deploys. The architecture decisions, the pricing model, the review, and everything running in production are mine. The tooling changes how fast code gets written; it doesn't change who is accountable for whether it's correct.
-
----
-
-## Screenshots
-
-Captured from a demo dealer workspace with fictional business details. Spot prices, sold-comparable data and grading references are real.
-
-### Vision intake: one photograph, many line items
-
-<p align="center">
-  <img src="screenshots/vision-intake-segmented.png" width="900" alt="Six graded coins segmented from a single photograph into individual staged line items">
-</p>
-
-<p align="center"><sub>A single photo of six graded slabs, segmented into individual items. Each is matched against the bullion dictionary for metal, weight and purity; anything the label does not carry is flagged for manual confirmation rather than guessed.</sub></p>
-
-<p align="center">
-  <img src="screenshots/vision-intake-processing.png" width="900" alt="Slab label being read during appraisal intake">
-</p>
-
-<p align="center"><sub>Intake in progress. Live spot for all four metals is pinned to the header with its source and timestamp.</sub></p>
-
-### Melt and collector premium, priced separately
-
-<p align="center">
-  <img src="screenshots/quote-melt-premium-breakdown.png" width="900" alt="Quote line items showing melt value, numismatic premium, true comp, suggested range and final offer">
-</p>
-
-<p align="center"><sub>Every line item exposes melt value, numismatic premium, current true comp, the suggested range produced by the dealer's own rules, and the final offer. The components are never shown as one blended number.</sub></p>
-
-<p align="center">
-  <img src="screenshots/valuation-detail-provenance.png" width="900" alt="Valuation detail showing each comparable normalized against spot at its own sale date">
-</p>
-
-<p align="center"><sub>Value provenance. Each comparable is normalized against the spot price <em>at its own sale date</em> before the collector premium is isolated, so a comp sold at a different gold price still contributes a meaningful premium. Dealer include/exclude decisions recalculate the premium deterministically.</sub></p>
-
-<p align="center">
-  <img src="screenshots/comp-outlier-rejection.png" width="900" alt="Twenty-five comparables fetched, nine included after automatic outlier rejection">
-</p>
-
-<p align="center"><sub>Automatic outlier rejection: 25 fetched, 9 included. Rejections carry a reason — poor match, multi-coin lot, bulk anomaly — and the dealer can override any of them.</sub></p>
-
-### Dealer policy, versioned and reproducible
-
-<p align="center">
-  <img src="screenshots/dealer-workspace-settings.png" width="760" alt="Dealer workspace settings covering quote branding, quote behaviour, pricing defaults and BYOK Greysheet integration">
-</p>
-
-<p align="center"><sub>Workspace configuration. Quote-sheet branding, quote validity and alt-channel fee assumptions, pricing defaults, and bring-your-own-key CDN Greysheet integration: a dealer supplies their own credentials for wholesale grid valuations, with no licensing markup from us. Without a key, Greysheet bid and ask stay available as manual entry, and either path re-anchors the active margin rules.</sub></p>
-
-<p align="center">
-  <img src="screenshots/dealer-pricing-rules.png" width="900" alt="Versioned pricing rule sets with margin bands and premium decay tiers">
-</p>
-
-<p align="center"><sub>Margin bands by metal, value band, grade and key-date status. Rule sets are versioned: saving activates a new version, and every historical quote stays reproducible against the version that priced it. Premium decay tiers are opt-in and dealer-configured, never assumed universal.</sub></p>
-
-<p align="center">
-  <img src="screenshots/out-of-band-override.png" width="900" alt="Out-of-band price override awaiting approval, recorded in the audit trail">
-</p>
-
-<p align="center"><sub>Pricing outside the suggested range is an override, not a silent edit. It requires a permissioned approver and is recorded in the audit trail. Greysheet values can be keyed manually from the printed magazine to re-anchor the band.</sub></p>
-
-### Customer-facing quote
-
-<p align="center">
-  <img src="screenshots/customer-quote-spot-drift.png" width="900" alt="Customer quote showing spot at issuance versus live spot, with accept and counter actions">
-</p>
-
-<p align="center"><sub>The customer sees spot at issuance alongside live spot and the drift between them, melt value beside the offer, and can accept or counter remotely. Accepting locks the value; the snapshot is immutable from that point.</sub></p>
-
-### Access control
-
-<p align="center">
-  <img src="screenshots/staff-seats-rbac.png" width="900" alt="Staff seats and role-based permissions">
-</p>
-
-<p align="center"><sub>Seat-limited staff management with granular permissions: who may finalize outside the suggested range, who may approve another member's override, who may edit pricing rules.</sub></p>
-
----
+Naming unfinished work is intentional. Architecture credibility depends on keeping implemented, gated, private-evaluation, and planned states separate.
 
 ## Stack
 
-Python 3.12 | FastAPI (async) | SQLAlchemy 2.0 | Alembic | PostgreSQL 16 | pytest | Docker Compose | Caddy | DigitalOcean | Cloudflare R2 & Pages | React 18 + Vite | Stripe
+Python 3.12 · FastAPI (async) · SQLAlchemy 2.0 · Alembic · PostgreSQL 16 · pytest · React 18 · Vite · Node test runner · Docker Compose · Caddy · DigitalOcean · Cloudflare Pages · Stripe
 
 ---
 
-Built and operated by **Raymond J. Kraft** | [rootsnolimits.com](https://rootsnolimits.com) | [LinkedIn](https://linkedin.com/in/raymondkraft)
+**CounterMint™ is built and operated by [Raymond J. Kraft](https://linkedin.com/in/raymondkraft) through [Roots No Limits LLC](https://rootsnolimits.com).**
+
+[countermint.io](https://countermint.io) · [app.countermint.io](https://app.countermint.io) · [Live customer quote](https://app.countermint.io/q/5eiJMiqsuZgLrZdtKfYuze3W8RrgL6qYuw4bIcIbkvw) · [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com)

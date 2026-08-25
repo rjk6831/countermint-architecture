@@ -24,11 +24,11 @@ These screens come from controlled demonstration workspaces. They show product b
 
 <p align="center">
   <a href="../screenshots/cdn-gsid-appraisal.png">
-    <img src="../screenshots/cdn-gsid-appraisal.png" width="1100" alt="Appraisal intake with separate CDN GSID, PCGS catalog number, Friedberg number, certification serial, grade, metal, weight, and purity fields">
+    <img src="../screenshots/cdn-gsid-appraisal.png" width="1100" alt="Standard appraisal intake showing the GSID control that leads into a separate enhanced CDN sandbox workspace">
   </a>
 </p>
 
-Catalog identifiers stay distinct. GSID, PCGS catalog number, and Friedberg number describe catalog identity; the certification number remains the holder's unique slab serial. The screen demonstrates identity intake in CounterMint's [internal CDN evaluation path](cdn-sandbox.md), not public provider authorization or a provider-derived value display.
+Catalog identifiers stay distinct. GSID, PCGS catalog number, and Friedberg number describe catalog identity; the certification number remains the holder's unique slab serial. This is the standard appraisal form, not a sandbox screenshot. In sandbox mode, GSID opens a separate enhanced workspace with detailed item insights, protected reference context, independent cross-checks, versioned rule output, staging, and DRAFT review. That additional UI is not pictured publicly; see the [sandbox boundary and screenshot policy](cdn-sandbox.md).
 
 ## 2. Price melt and collector premium separately
 

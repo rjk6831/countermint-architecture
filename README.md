@@ -72,11 +72,11 @@ CounterMint takes a dealer from intake to a defensible valuation, a branded cust
 
 <p align="center">
   <a href="screenshots/cdn-gsid-appraisal.png">
-    <img src="screenshots/cdn-gsid-appraisal.png" width="1100" alt="CounterMint appraisal intake showing distinct CDN GSID, PCGS catalog, Friedberg, certification, grade, designation, signature, metal, weight, and purity fields">
+    <img src="screenshots/cdn-gsid-appraisal.png" width="1100" alt="Standard CounterMint appraisal intake showing the GSID control that leads into a separate enhanced CDN sandbox workspace">
   </a>
 </p>
 
-<p align="center"><em>The appraisal keeps GSID, PCGS catalog, Friedberg, and slab certification numbers separate. This is CounterMint's private internal sandbox, not a production CDN integration or a claim of publisher authorization.</em></p>
+<p align="center"><em>This is the normal appraisal screen, not the CDN sandbox UI. GSID is the entry point: in sandbox mode it opens a separate enhanced dealer workspace for detailed item insights, protected reference context, independent cross-checks, versioned rules, and DRAFT quote review. That additional UI is intentionally not shown publicly.</em></p>
 
 ---
 
@@ -168,6 +168,8 @@ Quote Studio lets the dealer choose approved labels and whether terminal decline
 ## Private CDN integration sandbox
 
 CounterMint maintains a separate, access-controlled founder sandbox for CounterMint-only evaluation of a possible future Coin Dealer Newsletter integration. It is ready to support a publisher review if CDN invites or authorizes one; it is not currently a joint evaluation, partnership, or production integration. The sandbox demonstrates catalog identity across GSID, PCGS catalog, and Friedberg identifiers; grading-service and CAC context; protected reference ladders; independent melt and comparable-sales cross-checks; versioned dealer rules; and a contained customer-safe DRAFT preview.
+
+The GSID image near the top of this README shows only the normal appraisal entry point. It is not a capture of—and should not be read as representative of—the separate enhanced sandbox interface described here.
 
 Provider-returned wholesale values remain authenticated and confined to the protected evaluation surface. Raw observations are retention-bounded, request secrets are log-redacted, and the sandbox cannot issue or share a public provider-derived quote. Dealer BYOK activation and any public CDN-derived display remain disabled pending CDN's written authorization and a signed integration addendum.
 

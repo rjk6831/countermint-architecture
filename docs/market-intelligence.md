@@ -2,16 +2,16 @@
 
 [← Back to the project overview](../README.md) · [System architecture](architecture.md) · [Pricing decisions](decisions/) · [Roadmap](roadmap.md)
 
-Metals Insights is CounterMint's dealer-facing market workspace. It starts with externally sourced, provider-delayed observations, then validates, stores, aggregates, and renders the history CounterMint actually received.
+Metals Insights is CounterMint's dealer-facing market workspace. It covers the four core quote metals—gold, silver, platinum, and palladium—plus 16 additional metal instruments. It starts with externally sourced observations delayed by one minute, then validates, stores, aggregates, and renders the history CounterMint actually received.
 
-“Native” refers to CounterMint's sampling, persistence, interval derivation, API, charting, and disclosure logic. It does not mean CounterMint originates exchange prices or provides an executable trading feed.
+“Native” refers to CounterMint's sampling, persistence, interval derivation, API, interactive line/candlestick charting, and disclosure logic. It does not mean CounterMint originates exchange prices or provides a live or executable trading feed.
 
 ## Two market surfaces, two responsibilities
 
 | Surface | Purpose | Authority |
 |---|---|---|
 | Core metal snapshot | Keep gold, silver, platinum, and palladium visible throughout appraisal and quote work | Timestamped reference context for the established melt-pricing path |
-| Metals Insights | Explore a wider searchable catalog through local history, line/candle views, ranges, intervals, and OHLC tables | Dealer research and market context; it does not silently change a quote |
+| Metals Insights | Explore 20 instruments through local history, interactive line/candlestick views, ranges, intervals, and OHLC tables | One-minute-delayed dealer research context; never quote or trading authority |
 
 Keeping these responsibilities separate prevents an exploratory chart feature from becoming an accidental pricing engine.
 
@@ -51,9 +51,10 @@ These are therefore **locally sampled, indicative OHLC candles**, not exchange c
 The implemented workspace supports:
 
 - a concise four-metal header across dealer workflows;
-- a broader searchable and filterable instrument catalog;
-- interactive line and candle presentation;
-- validated ranges and sampling intervals;
+- a searchable and filterable catalog of 20 instruments: four core quote metals and 16 additional metals;
+- interactive native line and candlestick presentation;
+- validated range and interval controls;
+- zoom, pan, cursor inspection, bucket pinning, and previous/next navigation;
 - visible source, provider sample time, age/freshness, sample count, and coverage;
 - accessible OHLC tabular output alongside the chart;
 - explicit empty, partial-coverage, delayed, and stale states;

@@ -86,7 +86,7 @@ CounterMint takes a dealer from intake to a defensible valuation, a branded cust
 |---|---|---|
 | **Appraisal intake** | Manual entry, multi-item image capture, label extraction, and distinct catalog identifiers | Uncertain fields are staged for confirmation instead of guessed |
 | **Explainable valuation** | Melt, collector premium, sold comps, exclusions, source, and policy are inspectable separately | Deterministic arithmetic and rule execution remain authoritative |
-| **Metals Insights** | Searchable market catalog with interactive line/candle views, ranges, intervals, freshness, and OHLC tables | Provider-delayed observations; CounterMint-native aggregation with no invented buckets |
+| **Metals Insights** | Four core quote metals plus 16 additional instruments, with interactive native line/candlestick charts, ranges, intervals, freshness, and OHLC tables | One-minute-delayed provider observations; no invented buckets and no live-trading claim |
 | **Pricing policy** | Versioned offer ranges, transaction-side controls, and Premium Protection | Historical quotes continue to resolve against the policy that priced them |
 | **Quote Studio** | Presets, click-to-edit regions, brand controls, artwork composition, customer actions, and responsive preview | Strict versioned design JSON and one shared customer/preview/print renderer |
 | **Customer negotiation** | Accept, customer counter, dealer counter-back, rejection, and terminal per-item decline | State-checked server lifecycle despite dealer-configurable labels and thresholds |
@@ -95,7 +95,7 @@ CounterMint takes a dealer from intake to a defensible valuation, a branded cust
 
 ## CounterMint in 90 seconds
 
-1. **Read the market.** The workspace keeps the four core quote metals visible while Metals Insights opens a wider searchable catalog and the locally sampled history CounterMint has actually received.
+1. **Read the market.** The workspace keeps gold, silver, platinum, and palladium visible while Metals Insights adds 16 other metal instruments and the locally sampled history CounterMint has actually received.
 2. **Capture the item.** A dealer enters it manually or photographs multiple coins and slabs. Vision assists segmentation and label extraction; uncertain fields require confirmation.
 3. **Resolve the value.** Deterministic arithmetic computes melt. Sold comparables are normalized against historical spot to isolate collector premium, with inclusion and exclusion evidence preserved.
 4. **Apply dealer policy.** Versioned ranges and Premium Protection operate on explicit inputs instead of hiding the dealer's strategy inside one opaque adjustment.
@@ -120,9 +120,25 @@ Quote Studio is not a free canvas, a screenshot generator, or arbitrary CSS past
 
 ---
 
-## Metals Insights: external observations, native derivation
+## Metals Insights: native charting across 20 instruments
 
-CounterMint does not claim to originate exchange data. It ingests provider-delayed observations, validates and timestamps what arrived, and then stores, aggregates, and renders its own market series in PostgreSQL.
+The dealer workspace keeps gold, silver, platinum, and palladium close to the appraisal flow. Metals Insights adds 16 other metal instruments in a searchable catalog. Provider observations are delayed by one minute; CounterMint validates and timestamps what arrives, then stores, aggregates, and renders its own market series in PostgreSQL.
+
+<p align="center">
+  <a href="screenshots/metals-insights-candles.png">
+    <img src="screenshots/metals-insights-candles.png" width="1100" alt="CounterMint Metals Insights showing an interactive 24-hour gold candlestick chart with five-minute intervals, zoom and pan controls, a pinned OHLC bucket, coverage, and incomplete-candle disclosure">
+  </a>
+</p>
+
+<p align="center"><em>The 24-hour candlestick view uses five-minute buckets. Dealers can zoom, pan, pin a completed candle, step between buckets, and inspect open, high, low, close, sample count, coverage, and change. Incomplete buckets remain labeled.</em></p>
+
+<p align="center">
+  <a href="screenshots/metals-insights-line-chart.png">
+    <img src="screenshots/metals-insights-line-chart.png" width="1100" alt="CounterMint Metals Insights showing an interactive 30-day gold line chart with one-hour intervals, cursor inspection, zoom and pan controls, and provider-delay disclosure">
+  </a>
+</p>
+
+<p align="center"><em>The same stored observations can be explored as an interactive 30-day line chart at one-hour intervals. Range and interval controls resample the local series without filling gaps or inventing market ticks.</em></p>
 
 For every completed interval:
 
@@ -132,7 +148,7 @@ For every completed interval:
 - sample count and expected coverage stay visible;
 - empty buckets remain gaps rather than being interpolated into false history.
 
-Dealers can already switch instruments, line/candle presentation, date ranges, and sampling intervals, with accessible OHLC tables and freshness disclosures. The broader research surface remains separate from the authoritative melt path so exploratory charts cannot silently rewrite a quote.
+This is delayed market context for dealer research, not a live feed or trading tool. Dealers can switch instruments, line/candlestick presentation, date ranges, and sampling intervals, with accessible OHLC tables and freshness disclosures. The research surface remains separate from the authoritative melt path so chart interaction cannot rewrite a quote.
 
 [See how CounterMint derives and governs market series →](docs/market-intelligence.md)
 

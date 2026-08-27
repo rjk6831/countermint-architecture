@@ -58,9 +58,25 @@ Catalog identifiers stay distinct. GSID, PCGS catalog number, and Friedberg numb
 
 ## 3. Explore market history without confusing it with quote authority
 
-The four core quote metals stay visible across the workspace. The separate Metals Insights surface adds a searchable catalog, interactive line/candle views, ranges, intervals, freshness, coverage, and accessible OHLC tables.
+Gold, silver, platinum, and palladium stay visible across the dealer workspace. Metals Insights adds 16 other metal instruments in a searchable catalog, for 20 instruments in total.
 
-CounterMint derives those candles from the provider-delayed observations it actually stored: first sample for open, observed extrema for high and low, and last sample for close. Empty intervals remain gaps. The research surface is deliberately separate from the authoritative melt path.
+<p align="center">
+  <a href="../screenshots/metals-insights-candles.png">
+    <img src="../screenshots/metals-insights-candles.png" width="1100" alt="Metals Insights 24-hour gold candlestick chart with five-minute intervals, zoom and pan controls, a pinned OHLC bucket, coverage, and incomplete-candle disclosure">
+  </a>
+</p>
+
+The candlestick view supports selectable ranges and intervals, zoom, pan, bucket pinning, previous/next navigation, and detailed OHLC inspection. This 24-hour view uses five-minute buckets and keeps the latest incomplete candle visibly separate from completed history.
+
+<p align="center">
+  <a href="../screenshots/metals-insights-line-chart.png">
+    <img src="../screenshots/metals-insights-line-chart.png" width="1100" alt="Metals Insights interactive 30-day gold line chart with one-hour intervals, cursor inspection, zoom and pan controls, and provider-delay disclosure">
+  </a>
+</p>
+
+The line view uses the same native charting path and stored observations. Here, a 30-day range is shown at one-hour intervals with cursor inspection, zoom, pan, and an accessible data table.
+
+Provider observations are delayed by one minute. CounterMint derives candles from the samples it actually stored: first sample for open, observed extrema for high and low, and last sample for close. Empty intervals remain gaps. Metals Insights is dealer research context, not a live trading tool, and it remains separate from the authoritative melt path.
 
 [See the market-series derivation and failure behavior →](market-intelligence.md)
 

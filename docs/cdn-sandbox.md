@@ -34,7 +34,7 @@ CounterMint maintains a separate, access-controlled founder sandbox for CounterM
 
 CDN's published [API Terms of Use and License Agreement](https://www.greysheet.com/cms/1053/) treats GSID, catalog metadata, retail pricing, and wholesale pricing as different licensed-data classes. Public display rights differ by class, and wholesale values require prior written permission.
 
-For that reason, this portfolio does not publish a real sandbox screenshot with only the prices blurred. A capture can still reveal licensed metadata, reference-ladder structure, branding, or other provider-returned context after the obvious numbers are covered. A future public walkthrough should use a fully synthetic demonstration record with no provider-returned data, or a specific capture set approved by CDN in writing. Until then, this page describes CounterMint's UI and workflow in text without presenting the normal appraisal screenshot as proof of the additional sandbox screens.
+No enhanced sandbox screenshot is published because blurring the prices would not remove licensed metadata, reference-ladder structure, branding, or other provider-returned context. The standard appraisal screenshot above shows only the GSID entry point; the enhanced workflow is described here without displaying CDN-derived material.
 
 ## End-to-end private workflow
 

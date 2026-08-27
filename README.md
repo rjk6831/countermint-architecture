@@ -6,7 +6,7 @@ CounterMint takes a dealer from intake to a defensible valuation, a branded cust
 
 **Private beta · Designed, built, deployed, and operated by Raymond J. Kraft**
 
-[View a live customer quote](https://app.countermint.io/q/5eiJMiqsuZgLrZdtKfYuze3W8RrgL6qYuw4bIcIbkvw) · [Request a walkthrough](mailto:ray@rootsnolimits.com)
+[View a live customer quote](https://app.countermint.io/q/YcQk3L7mU5mVaF5L-es1bGU8pUIZy7_JVTSQmR-gBOg) · [Request a walkthrough](mailto:ray@rootsnolimits.com)
 
 | Automated verification | Measured project footprint | Schema evolution | Core quote metals |
 |---|---|---|---|
@@ -271,4 +271,4 @@ Python 3.12 · FastAPI (async) · SQLAlchemy 2.0 · Alembic · PostgreSQL 16 · 
 
 **CounterMint™ is built and operated by [Raymond J. Kraft](https://linkedin.com/in/raymondkraft) through [Roots No Limits LLC](https://rootsnolimits.com).**
 
-[countermint.io](https://countermint.io) · [app.countermint.io](https://app.countermint.io) · [Live customer quote](https://app.countermint.io/q/5eiJMiqsuZgLrZdtKfYuze3W8RrgL6qYuw4bIcIbkvw) · [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com)
+[countermint.io](https://countermint.io) · [app.countermint.io](https://app.countermint.io) · [Live customer quote](https://app.countermint.io/q/YcQk3L7mU5mVaF5L-es1bGU8pUIZy7_JVTSQmR-gBOg) · [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com)

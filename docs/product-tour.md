@@ -2,7 +2,7 @@
 
 [← Back to the project overview](../README.md) · [Quote Studio](quote-studio.md) · [Market intelligence](market-intelligence.md) · [System architecture](architecture.md) · [Engineering evidence](engineering-evidence.md)
 
-These screens come from controlled demonstration workspaces. They show product behavior and market-shaped test data, not customer records. The current set is dated August 2026; Quote Studio is version 3. Older private-beta captures are labeled inline and kept only where they still explain a current workflow or data contract. Staff contact fields in the governance screenshot were permanently redacted before publication.
+These screenshots use demonstration workspaces and test data, not customer records. The current set is dated August 2026 and shows Quote Studio v3. Older private-beta screens are labeled inline where they still explain a current workflow. The staff screenshot has its contact fields permanently redacted.
 
 ## 1. Capture the item and preserve catalog identity
 
@@ -28,7 +28,7 @@ These screens come from controlled demonstration workspaces. They show product b
   </a>
 </p>
 
-Catalog identifiers stay distinct. GSID, PCGS catalog number, and Friedberg number describe catalog identity; the certification number remains the holder's unique slab serial. This is the standard appraisal form, not a sandbox screenshot. In sandbox mode, GSID opens a separate enhanced workspace with detailed item insights, protected reference context, independent cross-checks, versioned rule output, staging, and DRAFT review. That additional UI is not pictured publicly; see the [sandbox boundary and screenshot policy](cdn-sandbox.md).
+Catalog identifiers stay distinct. GSID, PCGS catalog number, and Friedberg number describe catalog identity; the certification number remains the holder's unique slab serial. This is the standard appraisal form, not a sandbox screenshot. In sandbox mode, GSID opens a separate enhanced workspace with detailed item insights, protected reference context, independent cross-checks, versioned rule output, staging, and DRAFT review. That additional UI is not pictured publicly; see the [sandbox licensing boundary](cdn-sandbox.md).
 
 ## 2. Price melt and collector premium separately
 

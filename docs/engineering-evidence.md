@@ -2,7 +2,7 @@
 
 [← Back to the project overview](../README.md)
 
-This note defines the public scale and verification claims used in the CounterMint architecture portfolio. The application repository is private, so the measurement boundary matters as much as the headline.
+CounterMint's application repository is private. This page records the basis for the project-size and test figures quoted in the public documentation.
 
 ## Repository measurement
 
@@ -40,9 +40,9 @@ For a language-only comparison, Python plus JavaScript and JSX account for **76,
 
 ## Automated-test claim
 
-The public claim is deliberately conservative: **700+ automated backend and frontend tests**.
+The public documentation reports **700+ automated backend and frontend tests**.
 
-It is written as a threshold instead of an exact collection result because the repository includes parameterized cases, PostgreSQL-backed integration suites, and environment-sensitive provider fixtures. An exact “passing” count belongs to a dated, exact-commit test receipt. This page does not convert a source-level inventory into a claim that every case passed in this documentation refresh.
+This is an inventory threshold, not an exact passing count. The repository includes parameterized cases, PostgreSQL-backed integration suites, and environment-sensitive provider fixtures; an exact result belongs to a dated test run against a specific commit.
 
 Coverage includes:
 
@@ -88,9 +88,3 @@ That separation is deliberate. A local test, a recorded provider fixture, a brow
 - Provider-returned raw wholesale values follow provider-specific retention and purge rules while safe attribution is retained.
 - Durable AI jobs reserve budget before dispatch and reconcile ambiguous outcomes instead of blindly retrying a billable request.
 - Deployment requires an exact-commit test receipt and verifies the running API/frontend revision after service recreation.
-
-## AI-assisted development
-
-AI accelerates specification, implementation, review, and adversarial test generation. Accountability remains human: architecture, domain rules, security boundaries, provider contracts, migration safety, review decisions, and deployment operation are owned by Raymond J. Kraft.
-
-The quality claim is therefore not “AI wrote a large codebase.” It is that high-throughput implementation is constrained by explicit invariants, reproducible tests, forward-only schema discipline, and evidence that states exactly what was—and was not—verified.

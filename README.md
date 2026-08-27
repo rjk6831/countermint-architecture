@@ -236,10 +236,6 @@ The detailed [architecture guide](docs/architecture.md) separates current, relea
 
 The [engineering evidence note](docs/engineering-evidence.md) contains the measurement basis, application-language breakdown, test-count boundary, schema snapshot, and release-evidence limits.
 
-### AI-assisted engineering, human accountability
-
-I use AI to accelerate implementation inside a spec-first, review-gated workflow. I own the domain model, architecture, code review, test strategy, deployments, and production operation. Generated implementation does not merge because it looks plausible; it has to satisfy the same invariants, migration checks, and release gates as any other change.
-
 ---
 
 ## Near-term roadmap
@@ -266,8 +262,6 @@ Add a tenant-scoped, allowance-metered workflow for requesting an in-depth revie
 - Premium confidence is not yet surfaced as a first-class dealer control. Sparse comparable coverage remains visible instead of being hidden behind false certainty.
 - Optional AI design capabilities require provider, worker, storage, budget, and operator readiness; the deterministic Quote Studio must remain usable when those lanes are disabled.
 - CDN sandbox capability is not a claim of partnership, production authorization, or redistribution rights.
-
-Naming unfinished work is intentional. Architecture credibility depends on keeping implemented, gated, private-evaluation, and planned states separate.
 
 ## Stack
 

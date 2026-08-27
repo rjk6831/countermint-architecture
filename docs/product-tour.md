@@ -152,4 +152,4 @@ Public attribution is dealer opt-in and exposes only the approved nickname or fi
 
 ---
 
-[View the live customer quote](https://app.countermint.io/q/5eiJMiqsuZgLrZdtKfYuze3W8RrgL6qYuw4bIcIbkvw) · [Review the architecture](architecture.md) · [Review the roadmap](roadmap.md) · [Request a walkthrough](mailto:ray@rootsnolimits.com)
+[View the live customer quote](https://app.countermint.io/q/YcQk3L7mU5mVaF5L-es1bGU8pUIZy7_JVTSQmR-gBOg) · [Review the architecture](architecture.md) · [Review the roadmap](roadmap.md) · [Request a walkthrough](mailto:ray@rootsnolimits.com)

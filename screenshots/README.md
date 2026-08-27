@@ -6,6 +6,8 @@ See the [product tour](../docs/product-tour.md) for the screenshots in context.
 
 | Asset | Demonstrates |
 |---|---|
+| `metals-insights-candles.png` | Interactive 24-hour candlestick chart, five-minute buckets, zoom, pan, pinned OHLC inspection, coverage, and incomplete-bucket disclosure |
+| `metals-insights-line-chart.png` | Interactive 30-day line chart, one-hour intervals, cursor inspection, accessible data, and provider-delay disclosure |
 | `quote-studio-overview.png` | Design library, structured editing, responsive preview, publish separation, and capability-gated AI design |
 | `quote-studio-header-artwork.png` | Quote-bound header composition, focal controls, and optimized-derivative workflow |
 | `quote-studio-image-controls.png` | Frame, fit, anchors, pan, zoom, image adjustments, overlay, and two-step image acceptance |

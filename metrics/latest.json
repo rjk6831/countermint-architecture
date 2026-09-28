@@ -1,34 +1,34 @@
 {
   "product": "countermint",
   "measured_at": "2026-09-28",
-  "commit": "46942cf",
-  "commit_date": "2026-09-28",
+  "commit": "ee25899",
+  "commit_date": "2026-09-29",
   "first_commit": "2026-07-02",
-  "commits_total": 396,
-  "commits_last_30_days": 275,
+  "commits_total": 398,
+  "commits_last_30_days": 276,
   "lines": {
     "application": 104467,
-    "tests": 205369,
+    "tests": 205946,
     "migrations": 5491,
-    "infra": 11849,
-    "code_total": 327176,
+    "infra": 11966,
+    "code_total": 327870,
     "docs": 26525
   },
   "files": {
     "application": 369,
-    "tests": 266,
-    "test_files": 239,
+    "tests": 267,
+    "test_files": 240,
     "migrations": 58,
     "infra": 68,
     "docs": 174,
-    "tracked": 1256
+    "tracked": 1257
   },
   "tests": {
-    "declared_cases": 2510,
+    "declared_cases": 2523,
     "js_cases": 600,
     "js_parameterized_tables": 0,
-    "python_cases": 1910,
-    "python_parametrize_decorators": 303
+    "python_cases": 1923,
+    "python_parametrize_decorators": 304
   },
   "excluded": {
     "data_lines": 202847,

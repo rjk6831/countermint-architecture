@@ -1,38 +1,38 @@
 {
   "product": "countermint",
-  "measured_at": "2026-09-30",
-  "commit": "3215de4",
+  "measured_at": "2026-10-01",
+  "commit": "fd85641",
   "commit_date": "2026-10-01",
   "first_commit": "2026-07-02",
-  "commits_total": 584,
-  "commits_last_30_days": 461,
+  "commits_total": 738,
+  "commits_last_30_days": 614,
   "lines": {
-    "application": 122806,
-    "tests": 366715,
+    "application": 130969,
+    "tests": 390499,
     "migrations": 5760,
-    "infra": 14442,
-    "code_total": 509723,
-    "docs": 30561
+    "infra": 15306,
+    "code_total": 542534,
+    "docs": 32750
   },
   "files": {
-    "application": 440,
-    "tests": 331,
-    "test_files": 297,
+    "application": 473,
+    "tests": 378,
+    "test_files": 332,
     "migrations": 61,
-    "infra": 75,
-    "docs": 195,
-    "tracked": 1595
+    "infra": 81,
+    "docs": 197,
+    "tracked": 1687
   },
   "tests": {
-    "declared_cases": 3236,
-    "js_cases": 868,
+    "declared_cases": 3661,
+    "js_cases": 900,
     "js_parameterized_tables": 0,
-    "python_cases": 2368,
-    "python_parametrize_decorators": 437
+    "python_cases": 2761,
+    "python_parametrize_decorators": 593
   },
   "excluded": {
-    "data_lines": 311540,
-    "binary_files": 459,
+    "data_lines": 325454,
+    "binary_files": 461,
     "lockfile_files": 1,
     "generated_files": 1
   }

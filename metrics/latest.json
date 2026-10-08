@@ -1,17 +1,17 @@
 {
   "product": "countermint",
-  "measured_at": "2026-10-07",
-  "commit": "753cd32",
+  "measured_at": "2026-10-08",
+  "commit": "30409e4",
   "commit_date": "2026-10-08",
   "first_commit": "2026-07-02",
-  "commits_total": 944,
-  "commits_last_30_days": 792,
+  "commits_total": 945,
+  "commits_last_30_days": 793,
   "lines": {
     "application": 150556,
-    "tests": 406257,
+    "tests": 406273,
     "migrations": 5983,
     "infra": 16077,
-    "code_total": 578873,
+    "code_total": 578889,
     "docs": 38335
   },
   "files": {

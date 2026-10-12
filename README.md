@@ -13,9 +13,9 @@ CounterMint takes a dealer from intake to a defensible valuation, a branded cust
 <!-- metrics:start -->
 | Application source | Automated tests | Test cases | Migrations |
 |---:|---:|---:|---:|
-| **183,249** lines | **435,119** lines in 552 files | **5,576** declared | **77** Alembic revisions |
+| **183,249** lines | **435,199** lines in 552 files | **5,580** declared | **77** Alembic revisions |
 
-<sub>Measured from the private product repository at commit `88ab1505` (2026-10-12); refreshed 2026-10-12. 644,783 lines of code in total across application, tests, migrations, and infrastructure; 1,262 commits since 2026-07-02, 1,109 in the last 30 days. Test cases: 3,752 pytest (790 parametrized) and 1,824 Node test-runner cases. Counting rules and the workflow that keeps this current: <a href="metrics/README.md">metrics/README.md</a>.</sub>
+<sub>Measured from the private product repository at commit `20dd01c0` (2026-10-13); refreshed 2026-10-12. 644,924 lines of code in total across application, tests, migrations, and infrastructure; 1,264 commits since 2026-07-02, 1,111 in the last 30 days. Test cases: 3,756 pytest (790 parametrized) and 1,824 Node test-runner cases. Counting rules and the workflow that keeps this current: <a href="metrics/README.md">metrics/README.md</a>.</sub>
 <!-- metrics:end -->
 
 [![test cases](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Frjk6831%2Fcountermint-architecture%2Fmain%2Fmetrics%2Fbadges%2Ftests.json)](metrics/README.md)
